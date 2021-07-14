@@ -1,12 +1,7 @@
-pangia\_gui\_sop
+PanGIA\_GUI\_README
 ================
 Gus Thomas
 7/13/2021
-
-<style>
-body {
-text-align: justify}
-</style>
 
 # **PanGIA GUI Manual:**
 
@@ -20,7 +15,8 @@ text-align: justify}
 
 ### 2. [Initial Download](#section-2-initial-download)
 
-      **2.1**: [**PanGIA & PanGIA GUI**](#pangia-and-pangia-gui)  
+      **2.1**: [**PanGIA & PanGIA
+GUI**](#section-21-pangia-and-pangia-gui)  
           *2.1.1*: [*Downloading from the Command
 Line*](#downloading-from-the-command-line)  
           *2.1.2*: [*Downloading Manually*](#downloading-manually)  
@@ -86,7 +82,7 @@ document as a GUI reference, please consult [**Section
 This section details the process of downloading PanGIA, the GUI, and
 curated reference databases necessary to run PanGIA.
 
-### **2.1**: **PanGIA and PanGIA GUI**
+### **Section 2.1)**: **PanGIA and PanGIA GUI**
 
 #### *2.1.1*: *Downloading from the Command Line*
 
@@ -124,12 +120,12 @@ environment independent of the host machine.
     details.
 
 2.  In a terminal, navigate to PanGIA GUI directory created in
-    [**Section 2.1**](#pangia-and-pangia-gui) and use command: ‘conda
-    env create –f gui.yml’. This acts on the .yml file within the GUI
-    root directory to construct the environment. By default, name of the
-    environment will be ‘gui’, but this can be replaced with any
-    preferred name by renaming the prefix of the .yml file prior to
-    creating the environment.
+    [**Section 2.1**](#section-21-pangia-and-pangia-gui) and use
+    command: ‘conda env create –f gui.yml’. This acts on the .yml file
+    within the GUI root directory to construct the environment. By
+    default, name of the environment will be ‘gui’, but this can be
+    replaced with any preferred name by renaming the prefix of the .yml
+    file prior to creating the environment.
 
 3.  Open a command line window and navigate to the GUI directory. Use
     command: ‘conda activate XXX’, where XXX is the name of the
