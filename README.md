@@ -687,7 +687,7 @@ widget features include:
 An example of the Visualizer as it will appear with widgets:
 
 <figure>
-<img src="gui/images_gui/Projects_and_Runs/scatterplot_wth_widgets.png">
+<img src="gui/images_gui/Projects_and_Runs/scatterplot_with_widgets.png">
 <figcaption>
 <em>the final visualizer will include multiple sliders, dynamic axis
 toggling, and other filtering tools</em>
