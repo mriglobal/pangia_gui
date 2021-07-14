@@ -203,9 +203,14 @@ typical PanGIA runs can be found in [**Section
 
 2.  In first window use command: ‘redis-server’.
 
-![*the redis-server in a terminal
-window*](gui/images_gui/GUI_Setup/redis.png) 3. In second window use
-command: ‘rq worker pangia-tasks’.
+<figure>
+<img src="gui/images_gui/GUI_Setup/redis.png">
+<figcaption>
+<em>the redis-server in a terminal window</em>
+</figcaption>
+</figure>
+
+3.  In second window use command: ‘rq worker pangia-tasks’.
 
 ![*the worker in a terminal
 window*](gui/images_gui/GUI_Setup/Terminal_RQ-Worker.png)
