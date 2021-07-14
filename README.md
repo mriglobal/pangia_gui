@@ -5,8 +5,6 @@ Gus Thomas
 
 # **PanGIA GUI Manual:**
 
-**PanGIA GUI Insignia Image HERE**
-
 ## **Your Guide to the PanGIA GUI**
 
 ## **Table of Contents**
@@ -93,22 +91,18 @@ curated reference databases necessary to run PanGIA.
 
 #### *Section 2.1.1)*: *Downloading from the Command Line*
 
-1.  Navigate to preferred local directory.
+1.  In a terminal, navigate to preferred local path.
 
-2.  Git clone from <http://gitlab.mriglobal.org/dyarmosh/PanGIA> into
-    the local directory. Run command: ‘conda install -c anaconda git’ if
-    the git package is not present.
-
-3.  Repeat Step \#2 for the PanGIA GUI, but clone from
-    <http://gitlab.mriglobal.org/bclark/pangia-flask-gui> instead.
-    Cloning the repository into a separate local directory is
-    recommended.
+2.  Git clone the repo from
+    <https://github.com/mriglobal/pangia_gui.git> - run the command:
+    `conda install -c anaconda git` if the git package is not present.
 
 #### *Section 2.1.2)*: *Downloading Manually*
 
-1.  Go to GitLab pages at XXXX (PanGIA) and XXXX (PanGIA GUI).
+1.  Go to the Github page: <https://github.com/mriglobal/pangia_gui>
 
-2.  Download both and extract to preferred path for each.
+2.  Download the repository and extract the zipped files to your
+    preferred local path.
 
 ### **Section 2.2)**: **Reference Databases**
 
@@ -127,30 +121,31 @@ environment independent of the host machine.
     details.
 
 2.  In a terminal, navigate to PanGIA GUI directory created in
-    [**Section 2.1**](#section-21-pangia-and-pangia-gui) and use
-    command: ‘conda env create –f gui.yml’. This acts on the .yml file
-    within the GUI root directory to construct the environment. By
-    default, name of the environment will be ‘gui’, but this can be
-    replaced with any preferred name by renaming the prefix of the .yml
-    file prior to creating the environment.
+    [**Section 2.1**](#section-21-pangia-and-pangia-gui). Please note
+    that the default relative path is ***`pangia_gui/gui`***. Use the
+    command: `conda env create –f  gui.yml`. This command acts on the
+    .yml file within the directory to construct a python environment
+    that satisfies PanGIA’s dependencies. By default, name of the
+    environment will be ‘gui’, but this can be replaced by renaming the
+    prefix of the .yml file prior to creating the environment.
 
-3.  Open a command line window and navigate to the GUI directory. Use
-    command: ‘conda activate XXX’, where XXX is the name of the
-    environment. Use the following series of commands to finish initial
-    database and environment setup:
+3.  Within the terminal from the previous step, use the command:
+    `conda activate XXX`, where XXX is the name of the environment
+    (‘gui’ by default). Next, run the following series of commands to
+    finish initial database and environment setup:
 
--   export FLASK\_APP=pangia\_gui.py
--   flask db init
--   flask db migrate –m
--   flask db upgrade
--   conda install -c bioconda fastp
+-   `export FLASK_APP=pangia_gui.py`
+-   `flask db init`
+-   `flask db migrate –m`
+-   `flask db upgrade`
+-   `conda install -c bioconda fastp`
 
-Whenever accessing the GUI, begin by opening three separate command line
-terminals, and navigate each into the GUI directory. Next, execute the
-‘conda activate XXX’ command, where ‘XXX’ is the name of the conda
-environment specified above in [**Section
+Whenever accessing the GUI, begin by opening ***three separate command
+line terminals***, and navigate each into the PanGIA GUI directory.
+Next, execute the `conda activate XXX` command, where ‘XXX’ is the name
+of the conda environment specified above in [**Section
 3.1**](#section-31-preparing-a-non-dockerized-environment) (‘gui’ by
-default). in each of the three separate command line instances/windows.
+default) in each of the three separate command line instances/windows.
 Each instance is responsible for running one of three services
 comprising the GUI. See [**Section 4.1**](#section-41-accessing-the-gui)
 for more information. The GUI can be completely reset by navigating to
@@ -163,7 +158,7 @@ for more information. The GUI can be completely reset by navigating to
 
 2.  On the command line, navigate to the PanGIA GUI directory.
 
-3.  Open ‘docker-compose.yml’ with a command line editor. Alternatively,
+3.  Open `docker-compose.yml` with a command line editor. Alternatively,
     open the file with a text editor.
 
 4.  Notice the spacing: find the first line under services –&gt; app
@@ -172,7 +167,7 @@ for more information. The GUI can be completely reset by navigating to
     within that directory and mount it into the ‘app’ container.
 
 5.  On the command line and within the PanGIA GUI directory, use
-    command: ‘docker-compose build’.
+    command: `docker-compose build`.
 
 6.  Verify image construction with Docker Desktop or through Docker
     command line tools. More information on preparing images and
@@ -201,7 +196,7 @@ typical PanGIA runs can be found in [**Section
     3.1**](#section-31-preparing-a-non-dockerized-environment), prepare
     three command-line terminals as described.
 
-2.  In first window use command: ‘redis-server’.
+2.  In first window use command: `redis-server`.
 
 <figure>
 <img src="gui/images_gui/GUI_Setup/redis.png">
@@ -210,7 +205,9 @@ typical PanGIA runs can be found in [**Section
 </figcaption>
 </figure>
 
-3.  In second window use command: ‘rq worker pangia-tasks’.
+<br>
+
+3.  In second window use command: `rq worker pangia-tasks`.
 
 <figure>
 <img src="gui/images_gui/GUI_Setup/Terminal_RQ-Worker.png">
@@ -219,8 +216,10 @@ typical PanGIA runs can be found in [**Section
 </figcaption>
 </figure>
 
-4.  In third window use commands: ‘export FLASK\_APP=pangia\_gui.py’ +
-    ‘flask run’.
+<br>
+
+4.  In third window use commands: `export FLASK_APP=pangia_gui.py` +
+    `flask run`.
 
 <figure>
 <img src="gui/images_gui/GUI_Setup/Terminal_Flask_App.png">
@@ -229,13 +228,15 @@ typical PanGIA runs can be found in [**Section
 </figcaption>
 </figure>
 
+<br>
+
 5.  In a web browser, navigate to localhost:5000 for GUI access.
 
 #### *Section 4.1.2)*: *Dockerized Case*
 
 1.  In any command line window, navigate to PanGIA GUI directory.
 
-2.  Use command: ‘docker-compose up’.
+2.  Use command: `docker-compose up`.
 
 3.  In a web browser, navigate to localhost:8000 for GUI access.
 
@@ -391,6 +392,9 @@ directory named after the Project in the local pangia/upload directory.
 <em>file list within a project</em>
 </figcaption>
 </figure>
+
+<br>
+
 <figure>
 <img src="gui/images_gui/Projects_and_Runs/upload_files_browser.png">
 <figcaption>
@@ -494,7 +498,7 @@ last job iteration.
 #### **Section 4.3.1)**: **Baseline Example**
 
 The following walkthrough describes a typical PanGIA run with default
-settings. For this example, assume the Project ‘SOP\_Runs’ has already
+settings. For this example, assume the Project `SOP_Runs` has already
 been established, and is accessible through the GUI sidebar as shown
 below.
 
@@ -505,17 +509,18 @@ below.
 </figcaption>
 </figure>
 
+<br>
+
 This link redirects to the file page associated with ‘SOP\_Runs’. For
 the purposes of this tutorial, assume that two .fastq files – named
-‘BMal\_100000\_rep1\_R1’ and ‘BMal\_100000\_rep1\_R2’ – have already
-been uploaded to the Project.
+`BMal_100000_rep1_R1` and `BMal_100000_rep1_R2` – have already been
+uploaded to the Project.
 
 Clicking on the Run PanGIA buttons associated with either .fastq file
 directs to the Run PanGIA page. As discussed in [**Section
 4.2.4.1**](#section-4241-general-settings), this page is split into Run
 Information and General settings. Pressing the button associated with
-‘BMal\_100000\_rep1\_R1’ directs to the Run Information page shown
-below.
+`BMal_100000_rep1_R1` directs to the Run Information page shown below.
 
 <figure>
 <img src="gui/images_gui/Projects_and_Runs/run_info_example_bmal100k_final.png">
@@ -524,10 +529,12 @@ below.
 </figcaption>
 </figure>
 
+<br>
+
 This run has been given a name and description, and a selection for the
-‘Paired Fastq’ has been made – in this case, ‘BMal\_100000\_rep1\_R2’.
-None of the General settings on the Run PanGIA page need to be adjusted,
-as this is a default PanGIA run – so this job is ready to be executed by
+`Paired Fastq` has been made – in this case, `BMal_100000_rep1_R2`. None
+of the General settings on the Run PanGIA page need to be adjusted, as
+this is a default PanGIA run – so this job is ready to be executed by
 clicking on the Run PanGIA button at the bottom of the page!
 
 The PanGIA job is now running, which may be verified in a variety of
@@ -540,6 +547,8 @@ worker. It should look something like this:
 <em>typical printout in the rq worker terminal during a PanGIA run</em>
 </figcaption>
 </figure>
+
+<br>
 
 The rq worker provides time-stamped logs for run status and allows the
 user to follow along with each compute stage, or troubleshoot. Heading
@@ -554,9 +563,11 @@ ongoing/queued</em>
 </figcaption>
 </figure>
 
-The current job ‘BMAL100k’ is listed – and the link below the job
+<br>
+
+The current job `BMAL100k` is listed – and the link below the job
 directs to the Running Job page. If additional PanGIA runs were queued
-behind ‘BMAL100k’, they would be listed here. The Running Job page is a
+behind `BMAL100k`, they would be listed here. The Running Job page is a
 run log, and should look similar to the rq worker printout, as seen
 below:
 
@@ -568,6 +579,8 @@ during jobs/queued</em>
 </figcaption>
 </figure>
 
+<br>
+
 After the job is finished, the Running Job page turns into a Results
 page. Job completion will be reflected in the PanGIA page of the GUI:
 
@@ -577,12 +590,17 @@ page. Job completion will be reflected in the PanGIA page of the GUI:
 <em>the jobs page updating following run completion</em>
 </figcaption>
 </figure>
+
+<br>
+
 <figure>
 <img src="gui/images_gui/Projects_and_Runs/updated_finjobs_page_example1.png">
 <figcaption>
 <em>the jobs page updating following run completion</em>
 </figcaption>
 </figure>
+
+<br>
 
 Clicking the PanGIA Visualization button opens the Visualizer in a
 separate window. More detail concerning planned features are described
@@ -607,7 +625,7 @@ strain level, and includes a scatterplot and datatable. On the
 scatterplot, each dot on the plot corresponds to one such taxa and are
 listed on the x-axis.
 
-1.  The scatterplot y-axis indicates ‘Raw Read Count’ of each hit. This
+1.  The scatterplot y-axis indicates `Raw Read Count` of each hit. This
     axis is dynamically scaled based on maximum/minimum values present
     in the sample. In this example, the y-axis covers a very large range
     of values – between an effective measurement of zero reads and
@@ -620,9 +638,9 @@ listed on the x-axis.
     count) somewhere between fifty-thousand and five-hundred thousand
     reads – followed in order of magnitude by species and strain.
 
-2.  The scatterplot color-bar ‘Score-Gradient’ axis on the right
-    indicates hit performance on the selected ‘Score’ metric – either
-    ‘Standalone’, ‘Background’, or ‘Combined’. The color-bar is also
+2.  The scatterplot color-bar `Score-Gradient` axis on the right
+    indicates hit performance on the selected `Score` metric – either
+    `Standalone`, `Background`, or `Combined`. The color-bar is also
     dynamically scaled; in the above example, strain *Burkholderia
     pseudomallei* scored lowest among the three hits as indicated by its
     purplish hue, placing it near the bottom of the color-bar. However,
@@ -651,6 +669,8 @@ listed on the x-axis.
 <em>the embedded datatable within the visualizer</em>
 </figcaption>
 </figure>
+
+<br>
 
 5.  The tool-tip presents numerical results from a given row of the data
     table. In the below image, *Burkholderia pseudomallei* is shown.
