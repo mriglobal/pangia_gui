@@ -1,11 +1,13 @@
-PanGIA\_GUI\_README
+PanGIA GUI Manual
 ================
-Gus Thomas
-7/13/2021
+7/14/2021
 
-# **PanGIA GUI Manual:**
-
-## **Your Guide to the PanGIA GUI**
+<figure>
+<img src="gui/images_gui/pangia_logo.png">
+<figcaption>
+<em>Your Guide to the PanGIA GUI</em>
+</figcaption>
+</figure>
 
 ## **Table of Contents**
 
