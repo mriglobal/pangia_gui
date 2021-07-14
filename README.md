@@ -66,6 +66,8 @@ analysis*\]
 
 ## *Section 1)*: **Introduction**
 
+<div style="text-align: justify">
+
 This report contains instructions for the installation and use of the
 graphical interface designed for PanGIA. PanGIA is standalone and may be
 run independently from the command line. However, this forces the
@@ -82,6 +84,8 @@ Time. If you have already completed PanGIA setup and are using this
 document as a GUI reference, please consult [**Section
 4.2**](#section-42-gui-navigation) onward.
 
+</div>
+
 ## *Section 2)*: **Initial Download**
 
 This section details the process of downloading PanGIA, the GUI, and
@@ -90,6 +94,8 @@ curated reference databases necessary to run PanGIA.
 ### **Section 2.1)**: **PanGIA and PanGIA GUI**
 
 #### *Section 2.1.1)*: *Downloading from the Command Line*
+
+<div style="text-align: justify">
 
 1.  In a terminal, navigate to preferred local path.
 
@@ -196,6 +202,8 @@ typical PanGIA runs can be found in [**Section
     3.1**](#section-31-preparing-a-non-dockerized-environment), prepare
     three command-line terminals as described.
 
+</div>
+
 2.  In first window use command: `redis-server`.
 
 <figure>
@@ -232,6 +240,8 @@ typical PanGIA runs can be found in [**Section
 
 5.  In a web browser, navigate to localhost:5000 for GUI access.
 
+<div style="text-align: justify">
+
 #### *Section 4.1.2)*: *Dockerized Case*
 
 1.  In any command line window, navigate to PanGIA GUI directory.
@@ -250,6 +260,8 @@ and/or the ongoing job status page is provided under each listing. At
 the very bottom of the page, users may click a link directing to the
 PanGIA section of the GUI, described in more detail below.
 
+</div>
+
 <figure>
 <img src="gui/images_gui/Users_and_Dashboard/PanGIA_Dashboard.png">
 <figcaption>
@@ -257,11 +269,15 @@ PanGIA section of the GUI, described in more detail below.
 </figcaption>
 </figure>
 
+<div style="text-align: justify">
+
 ### **Section 4.2.2)**: **Users**
 
 Interface for adding users to the GUI’s persisted database. Current
 users are listed with name, username, email, date of last login, and
 role (Admin, User, etc.).
+
+</div>
 
 <figure>
 <img src="gui/images_gui/Users_and_Dashboard/PanGIA_Users.png">
@@ -269,6 +285,8 @@ role (Admin, User, etc.).
 <em>the users page</em>
 </figcaption>
 </figure>
+
+<div style="text-align: justify">
 
 ### **Section 4.2.3)**: **Settings**
 
@@ -292,12 +310,16 @@ time. The general settings are subdivided into three categories:
     may adjust thread-count made available for PanGIA. An even number is
     recommended. Default is two threads.
 
+</div>
+
 <figure>
 <img src="gui/images_gui/Settings/PanGIA_Settings_General_AppSettings.png">
 <figcaption>
 <em>application settings - within general settings</em>
 </figcaption>
 </figure>
+
+<div style="text-align: justify">
 
 2.  Preprocessing: Options to alter/filter reads prior to PanGIA
     analysis. May trim reads for quality level, adjust the average
@@ -306,12 +328,16 @@ time. The general settings are subdivided into three categories:
     number of base pairs to cut from 5’ or 3’ ends of reads. The user
     may opt to skip preprocessing.
 
+</div>
+
 <figure>
 <img src="gui/images_gui/Settings/PanGIA_Settings_General_Proprocessing.png">
 <figcaption>
 <em>preprocessing settings - within general settings</em>
 </figcaption>
 </figure>
+
+<div style="text-align: justify">
 
 3.  Run Parameters: Options determining read scoring, and additional
     forms of analysis (TMARK, Decision Tree, etc.) May specify values
@@ -321,12 +347,16 @@ time. The general settings are subdivided into three categories:
     (Standalone/Background/Combined), and a series of check boxes
     determine if additional analyses are included in the run.
 
+</div>
+
 <figure>
 <img src="gui/images_gui/Settings/PanGIA_Settings_Run_Param.png">
 <figcaption>
 <em>run parameter settings - within general settings</em>
 </figcaption>
 </figure>
+
+<div style="text-align: justify">
 
 ##### *Section 4.2.3.2)*: *Project Settings*
 
@@ -336,12 +366,16 @@ name, description, and slug. They may be constructed as children of an
 existing parent Project. When providing a name and slug, use only
 alphanumeric and ‘\_’ characters.
 
+</div>
+
 <figure>
 <img src="gui/images_gui/Settings/PanGIA_Settings_Projects.png">
 <figcaption>
 <em>project settings</em>
 </figcaption>
 </figure>
+
+<div style="text-align: justify">
 
 ##### *Section 4.2.3.3)*: *File Template Settings*
 
@@ -351,12 +385,16 @@ creating a new File Template, the user must decide which Meta-Types will
 be available for runs using that File Template. A default for .fastq
 files is included.
 
+</div>
+
 <figure>
 <img src="gui/images_gui/Settings/PanGIA_Settings_File_Templates.png">
 <figcaption>
 <em>file template settings</em>
 </figcaption>
 </figure>
+
+<div style="text-align: justify">
 
 ##### *Section 4.2.3.4)*: *Meta-Type Settings*
 
@@ -367,12 +405,16 @@ the sampling date. User may specify whether data was a control sample.
 New Meta-Types require a name, description, and value (string, integer,
 Boolean, date, etc.), and may be designated as ‘required’ if desired.
 
+</div>
+
 <figure>
 <img src="gui/images_gui/Settings/PanGIA_Settings_MetaTypes.png">
 <figcaption>
 <em>meta-type settings</em>
 </figcaption>
 </figure>
+
+<div style="text-align: justify">
 
 #### **Section 4.2.4)**: **Projects**
 
@@ -385,6 +427,8 @@ ascending/descending or date/name. Each File Template header has a large
 blue button labeled ‘Add New File’ - this directs the user to the upload
 interface. Files uploaded through the GUI are copied into a new
 directory named after the Project in the local pangia/upload directory.
+
+</div>
 
 <figure>
 <img src="gui/images_gui/Projects_and_Runs/PanGIA_Projects_Main.png">
@@ -402,6 +446,8 @@ directory named after the Project in the local pangia/upload directory.
 specification</em>
 </figcaption>
 </figure>
+
+<div style="text-align: justify">
 
 ##### *Section 4.2.4.1)*: *Running PanGIA from the Projects Tab*
 
@@ -423,6 +469,8 @@ Template, and Results.
 1.  The X Information tab specifies the filename, upload date, filepath,
     and description.
 
+</div>
+
 <figure>
 <img src="gui/images_gui/Projects_and_Runs/PanGIA_Projects_XInfo.png">
 <figcaption>
@@ -430,9 +478,13 @@ Template, and Results.
 </figcaption>
 </figure>
 
+<div style="text-align: justify">
+
 2.  The Results tab lists all PanGIA runs that the file has been part
     of. Details include run name/date, description, parent Project,
     user, and filenames.
+
+</div>
 
 <figure>
 <img src="gui/images_gui/Projects_and_Runs/PanGIA_Projects_Results.png">
@@ -440,6 +492,8 @@ Template, and Results.
 <em>the results tab within a project</em>
 </figcaption>
 </figure>
+
+<div style="text-align: justify">
 
 3.  Runs have a link labeled ‘View Results’. Following this link directs
     the user to the PanGIA Results section of the GUI, described below
@@ -453,12 +507,16 @@ accessible through the Projects section of the GUI; each job also has
 the same ‘View Results’ link. Both are described above in [**Section
 4.2.4**](#section-424-projects).
 
+</div>
+
 <figure>
 <img src="gui/images_gui/Projects_and_Runs/PanGIA_Main.png">
 <figcaption>
 <em>the PanGIA runs page accessed via the GUI sidebar</em>
 </figcaption>
 </figure>
+
+<div style="text-align: justify">
 
 ##### *Section 4.2.5.1)*: *Results Page*
 
@@ -469,12 +527,16 @@ display that output. An in-depth PanGIA run log is provided at the
 bottom – the printout there is similar to what can be found in in the
 worker printout during the run. An example Results page appears below.
 
+</div>
+
 <figure>
 <img src="gui/images_gui/Projects_and_Runs/example_results_page.png">
 <figcaption>
 <em>the results page of a PanGIA run</em>
 </figcaption>
 </figure>
+
+<div style="text-align: justify">
 
 #### **Section 4.2.6)**: **PanGIA Real-Time**
 
@@ -486,12 +548,16 @@ Real-Time PanGIA is initiated, the user must manually terminate the job
 as desired. Completed Real-Time jobs persist PanGIA results from the
 last job iteration.
 
+</div>
+
 <figure>
 <img src="gui/images_gui/Projects_and_Runs/PanGIA_RealTime.png">
 <figcaption>
 <em>setting up a RealTime PanGIA run</em>
 </figcaption>
 </figure>
+
+<div style="text-align: justify">
 
 ### **Section 4.3)**: **Examples of Usage**
 
@@ -502,6 +568,8 @@ settings. For this example, assume the Project `SOP_Runs` has already
 been established, and is accessible through the GUI sidebar as shown
 below.
 
+</div>
+
 <figure>
 <img src="gui/images_gui/Projects_and_Runs/current_project_demo.png">
 <figcaption>
@@ -510,6 +578,8 @@ below.
 </figure>
 
 <br>
+
+<div style="text-align: justify">
 
 This link redirects to the file page associated with ‘SOP\_Runs’. For
 the purposes of this tutorial, assume that two .fastq files – named
@@ -522,6 +592,8 @@ directs to the Run PanGIA page. As discussed in [**Section
 Information and General settings. Pressing the button associated with
 `BMal_100000_rep1_R1` directs to the Run Information page shown below.
 
+</div>
+
 <figure>
 <img src="gui/images_gui/Projects_and_Runs/run_info_example_bmal100k_final.png">
 <figcaption>
@@ -530,6 +602,8 @@ Information and General settings. Pressing the button associated with
 </figure>
 
 <br>
+
+<div style="text-align: justify">
 
 This run has been given a name and description, and a selection for the
 `Paired Fastq` has been made – in this case, `BMal_100000_rep1_R2`. None
@@ -541,6 +615,8 @@ The PanGIA job is now running, which may be verified in a variety of
 ways. First, navigate to the command line terminal running the rq
 worker. It should look something like this:
 
+</div>
+
 <figure>
 <img src="gui/images_gui/Projects_and_Runs/rq_worker_printout.png">
 <figcaption>
@@ -550,10 +626,14 @@ worker. It should look something like this:
 
 <br>
 
+<div style="text-align: justify">
+
 The rq worker provides time-stamped logs for run status and allows the
 user to follow along with each compute stage, or troubleshoot. Heading
 back to the GUI, navigate to the Dashboard. It should look something
 like this:
+
+</div>
 
 <figure>
 <img src="gui/images_gui/Projects_and_Runs/ongoing_job_dashboard.png">
@@ -565,11 +645,15 @@ ongoing/queued</em>
 
 <br>
 
+<div style="text-align: justify">
+
 The current job `BMAL100k` is listed – and the link below the job
 directs to the Running Job page. If additional PanGIA runs were queued
 behind `BMAL100k`, they would be listed here. The Running Job page is a
 run log, and should look similar to the rq worker printout, as seen
 below:
+
+</div>
 
 <figure>
 <img src="gui/images_gui/Projects_and_Runs/ongoing_job_job_page.png">
@@ -581,8 +665,12 @@ during jobs/queued</em>
 
 <br>
 
+<div style="text-align: justify">
+
 After the job is finished, the Running Job page turns into a Results
 page. Job completion will be reflected in the PanGIA page of the GUI:
+
+</div>
 
 <figure>
 <img src="gui/images_gui/Projects_and_Runs/finished_run_jobs_page_example1.png">
@@ -602,11 +690,15 @@ page. Job completion will be reflected in the PanGIA page of the GUI:
 
 <br>
 
+<div style="text-align: justify">
+
 Clicking the PanGIA Visualization button opens the Visualizer in a
 separate window. More detail concerning planned features are described
 in [**Section 5**](#section-5-planned-visualizer-features), but the
 scatterplot for the static PanGIA run as described in this section
 should appear similar to the one depicted here:
+
+</div>
 
 <figure>
 <img src="gui/images_gui/Projects_and_Runs/vis_example1.png">
@@ -614,6 +706,8 @@ should appear similar to the one depicted here:
 <em>the visualized results of the run</em>
 </figcaption>
 </figure>
+
+<div style="text-align: justify">
 
 ##### *Section 4.3.1.1)*: *Baseline Example Visualizer Usage and Analysis*
 
@@ -663,6 +757,8 @@ listed on the x-axis.
     single row of this table appears as a tool-tip when the mouse is
     hovered over the center of a dot in the scatterplot.
 
+</div>
+
 <figure>
 <img src="gui/images_gui/Projects_and_Runs/vis_datatable_example1.png">
 <figcaption>
@@ -672,8 +768,12 @@ listed on the x-axis.
 
 <br>
 
+<div style="text-align: justify">
+
 5.  The tool-tip presents numerical results from a given row of the data
     table. In the below image, *Burkholderia pseudomallei* is shown.
+
+</div>
 
 <figure>
 <img src="gui/images_gui/Projects_and_Runs/upclose_hovertool.png">
@@ -682,6 +782,8 @@ listed on the x-axis.
 datapoint</em>
 </figcaption>
 </figure>
+
+<div style="text-align: justify">
 
 ## *Section 5)*: **Planned Visualizer Features**
 
@@ -705,6 +807,8 @@ widget features include:
     2.  Rank Filtering
 
 An example of the Visualizer as it will appear with widgets:
+
+</div>
 
 <figure>
 <img src="gui/images_gui/Projects_and_Runs/scatterplot_with_widgets.png">
