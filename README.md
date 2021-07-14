@@ -212,14 +212,22 @@ typical PanGIA runs can be found in [**Section
 
 3.  In second window use command: ‘rq worker pangia-tasks’.
 
-![*the worker in a terminal
-window*](gui/images_gui/GUI_Setup/Terminal_RQ-Worker.png)
+<figure>
+<img src="gui/images_gui/GUI_Setup/Terminal_RQ-Worker.png">
+<figcaption>
+<em>the worker in a terminal window</em>
+</figcaption>
+</figure>
 
 4.  In third window use commands: ‘export FLASK\_APP=pangia\_gui.py’ +
     ‘flask run’.
 
-![*the flask app in a terminal
-window*](gui/images_gui/GUI_Setup/Terminal_Flask_App.png)
+<figure>
+<img src="gui/images_gui/GUI_Setup/Terminal_Flask_App.png">
+<figcaption>
+<em>the flask app in a terminal window</em>
+</figcaption>
+</figure>
 
 5.  In a web browser, navigate to localhost:5000 for GUI access.
 
@@ -241,8 +249,12 @@ and/or the ongoing job status page is provided under each listing. At
 the very bottom of the page, users may click a link directing to the
 PanGIA section of the GUI, described in more detail below.
 
-![*the
-dashboard*](gui/images_gui/Users_and_Dashboard/PanGIA_Dashboard.png)
+<figure>
+<img src="gui/images_gui/Users_and_Dashboard/PanGIA_Dashboard.png">
+<figcaption>
+<em>the dashboard</em>
+</figcaption>
+</figure>
 
 ### **Section 4.2.2)**: **Users**
 
@@ -250,7 +262,12 @@ Interface for adding users to the GUI’s persisted database. Current
 users are listed with name, username, email, date of last login, and
 role (Admin, User, etc.).
 
-![*the users page*](gui/images_gui/Users_and_Dashboard/PanGIA_Users.png)
+<figure>
+<img src="gui/images_gui/Users_and_Dashboard/PanGIA_Users.png">
+<figcaption>
+<em>the users page</em>
+</figcaption>
+</figure>
 
 ### **Section 4.2.3)**: **Settings**
 
@@ -274,8 +291,12 @@ time. The general settings are subdivided into three categories:
     may adjust thread-count made available for PanGIA. An even number is
     recommended. Default is two threads.
 
-![*application settings - within general
-settings*](gui/images_gui/Settings/PanGIA_Settings_General_AppSettings.png)
+<figure>
+<img src="gui/images_gui/Settings/PanGIA_Settings_General_AppSettings.png">
+<figcaption>
+<em>application settings - within general settings</em>
+</figcaption>
+</figure>
 
 2.  Preprocessing: Options to alter/filter reads prior to PanGIA
     analysis. May trim reads for quality level, adjust the average
@@ -284,8 +305,12 @@ settings*](gui/images_gui/Settings/PanGIA_Settings_General_AppSettings.png)
     number of base pairs to cut from 5’ or 3’ ends of reads. The user
     may opt to skip preprocessing.
 
-![*preprocessing settings - within general
-settings*](gui/images_gui/Settings/PanGIA_Settings_General_Proprocessing.png)
+<figure>
+<img src="gui/images_gui/Settings/PanGIA_Settings_General_Proprocessing.png">
+<figcaption>
+<em>preprocessing settings - within general settings</em>
+</figcaption>
+</figure>
 
 3.  Run Parameters: Options determining read scoring, and additional
     forms of analysis (TMARK, Decision Tree, etc.) May specify values
@@ -295,8 +320,12 @@ settings*](gui/images_gui/Settings/PanGIA_Settings_General_Proprocessing.png)
     (Standalone/Background/Combined), and a series of check boxes
     determine if additional analyses are included in the run.
 
-![*run parameter settings - within general
-settings*](gui/images_gui/Settings/PanGIA_Settings_Run_Param.png)
+<figure>
+<img src="gui/images_gui/Settings/PanGIA_Settings_Run_Param.png">
+<figcaption>
+<em>run parameter settings - within general settings</em>
+</figcaption>
+</figure>
 
 ##### *Section 4.2.3.2)*: *Project Settings*
 
@@ -306,8 +335,12 @@ name, description, and slug. They may be constructed as children of an
 existing parent Project. When providing a name and slug, use only
 alphanumeric and ‘\_’ characters.
 
-![*project
-settings*](gui/images_gui/Settings/PanGIA_Settings_Projects.png)
+<figure>
+<img src="gui/images_gui/Settings/PanGIA_Settings_Projects.png">
+<figcaption>
+<em>project settings</em>
+</figcaption>
+</figure>
 
 ##### *Section 4.2.3.3)*: *File Template Settings*
 
@@ -317,8 +350,12 @@ creating a new File Template, the user must decide which Meta-Types will
 be available for runs using that File Template. A default for .fastq
 files is included.
 
-![*file template
-settings*](gui/images_gui/Settings/PanGIA_Settings_File_Templates.png)
+<figure>
+<img src="gui/images_gui/Settings/PanGIA_Settings_File_Templates.png">
+<figcaption>
+<em>file template settings</em>
+</figcaption>
+</figure>
 
 ##### *Section 4.2.3.4)*: *Meta-Type Settings*
 
@@ -329,14 +366,18 @@ the sampling date. User may specify whether data was a control sample.
 New Meta-Types require a name, description, and value (string, integer,
 Boolean, date, etc.), and may be designated as ‘required’ if desired.
 
-![*meta-type
-settings*](gui/images_gui/Settings/PanGIA_Settings_MetaTypes.png)
+<figure>
+<img src="gui/images_gui/Settings/PanGIA_Settings_MetaTypes.png">
+<figcaption>
+<em>meta-type settings</em>
+</figcaption>
+</figure>
 
 #### **Section 4.2.4)**: **Projects**
 
 Provides the name of each Project constructed in the Settings - Projects
-tab as described above in [\*\*Section
-4.2.3.2](#section-4232-project-settings). Clicking on the name of a
+tab as described above in [**Section
+4.2.3.2**](#section-4232-project-settings). Clicking on the name of a
 Project yields a list of all the files that have been uploaded to that
 Project. The list is grouped by File Template. Files may be ordered by
 ascending/descending or date/name. Each File Template header has a large
@@ -344,7 +385,25 @@ blue button labeled ‘Add New File’ - this directs the user to the upload
 interface. Files uploaded through the GUI are copied into a new
 directory named after the Project in the local pangia/upload directory.
 
-**Projects File Upload Page Image HERE**
+<figure>
+<img src="gui/images_gui/Projects_and_Runs/current_project_demo.png">
+<figcaption>
+<em>project sidebar dropdown menu - leads to project file list</em>
+</figcaption>
+</figure>
+<figure>
+<img src="gui/images_gui/Projects_and_Runs/PanGIA_Projects_Main.png">
+<figcaption>
+<em>file list within a project</em>
+</figcaption>
+</figure>
+<figure>
+<img src="gui/images_gui/Projects_and_Runs/upload_files_browser.png">
+<figcaption>
+<em>file browser - default upload path corresponds to general settings
+specification</em>
+</figcaption>
+</figure>
 
 ##### *Section 4.2.4.1)*: *Running PanGIA from the Projects Tab*
 
@@ -356,7 +415,12 @@ accessed from. All General settings may be adjusted here: the interface
 is identical to that appearing in [**Section
 4.2.3.1**](#section-4231-general-settings).
 
-**Run Information Image HERE**
+<figure>
+<img src="gui/images_gui/Projects_and_Runs/run_info_example_bmal100k_final.png">
+<figcaption>
+<em>selecting paired fastq files</em>
+</figcaption>
+</figure>
 
 ##### *Section 4.2.4.2)*: Exploring the Projects Tab
 
@@ -368,19 +432,27 @@ Template, and Results.
 1.  The X Information tab specifies the filename, upload date, filepath,
     and description.
 
-**X-Information Image HERE**
+<figure>
+<img src="gui/images_gui/Projects_and_Runs/PanGIA_Projects_XInfo.png">
+<figcaption>
+<em>the “X” info information tab</em>
+</figcaption>
+</figure>
 
 2.  The Results tab lists all PanGIA runs that the file has been part
     of. Details include run name/date, description, parent Project,
     user, and filenames.
 
-**Projects-Results Image HERE**
+<figure>
+<img src="gui/images_gui/Projects_and_Runs/PanGIA_Projects_Results.png">
+<figcaption>
+<em>the results tab within a project</em>
+</figcaption>
+</figure>
 
 3.  Runs have a link labeled ‘View Results’. Following this link directs
     the user to the PanGIA Results section of the GUI, described below
     in [**Section 4.2.5**](#section-425-pangia-pangia-results).
-
-**Projects-View-Results Image HERE**
 
 #### **Section 4.2.5)**: **PanGIA & PanGIA Results**
 
@@ -389,6 +461,13 @@ completed job contains the same information found in the Results tab
 accessible through the Projects section of the GUI; each job also has
 the same ‘View Results’ link. Both are described above in [**Section
 4.2.4**](#section-424-projects).
+
+<figure>
+<img src="gui/images_gui/Projects_and_Runs/PanGIA_Main.png">
+<figcaption>
+<em>the PanGIA runs page accessed via the GUI sidebar</em>
+</figcaption>
+</figure>
 
 ##### *Section 4.2.5.1)*: *Results Page*
 
@@ -399,7 +478,12 @@ display that output. An in-depth PanGIA run log is provided at the
 bottom – the printout there is similar to what can be found in in the
 worker printout during the run. An example Results page appears below.
 
-**PanGIA Results Image HERE**
+<figure>
+<img src="gui/images_gui/Projects_and_Runs/example_results_page.png">
+<figcaption>
+<em>the results page of a PanGIA run</em>
+</figcaption>
+</figure>
 
 #### **Section 4.2.6)**: **PanGIA Real-Time**
 
