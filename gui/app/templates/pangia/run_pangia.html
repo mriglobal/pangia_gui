@@ -1,0 +1,91 @@
+{% extends "one_column.html" %}
+{% block app_styles %}{% endblock %}
+{% block app_main_content %}
+<div class="p-5">
+
+    {% include "include/messages.html" %}
+
+    {# Select a project before selecting your files #}
+    {% if project == '' %}
+        <div class="card">
+            <div class="card-header"><h3>PanGIA - Select Project</h3></div>
+
+            <form method="GET" enctype="multipart/form-data" action="{{ url_for('main.pangia_start') }}">
+            <table class="table table-striped shadow">
+                <tr>
+                <td>
+                <select name="proj" id="proj">
+                {% for this_project in project_list %}
+                <option value="{{ this_project.slug }}">{{ this_project.name }}</option>
+                {% endfor %}
+                </select>
+                </td>
+                </tr>
+            </table>
+            <div class="float-right"><input type="submit" class="btn btn-primary" value="Next: PanGIA Run Info"></div>
+            </form>
+
+        </div>
+
+    {# Project has been selected. Now select pangia parameters #}
+    {% else %}
+
+        <form method="POST" enctype="multipart/form-data">
+        {{ form.hidden_tag() }}
+        <input type="hidden" name="proj_slug" id="proj_slug" value="{{ project.slug }}" />
+
+        <div class="card mb-3">
+            <div class="card-header"><h3>PanGIA - Run Information</h3></div>
+
+            <table class="table table-striped shadow-none border-0 mb-0">
+                {% for x in run_param %}
+                <tr>
+                    <td><strong>{{ form[x].label.text }}</strong></td>
+                    <td>
+                    {{ form[x](placeholder=form[x].label.text) }}
+                    </td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+
+        {# Preprocessing #}
+        <div class="card mb-3">
+            <div class="card-header"><h4>Preprocessing</h4></div>
+            <table class="table table-striped shadow-none border-0 mb-0">
+                {% for x in pre_param %}
+                <tr>
+                    <td><strong>{{ form[x].label.text }}</strong></td>
+                    <td>
+                    {{ form[x](placeholder=form[x].label.text) }}
+                    </td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+
+        {# Preprocessing #}
+        <div class="card mb-3">
+            <div class="card-header"><h4>PanGIA Settings</h4></div>
+            <table class="table table-striped shadow-none border-0 mb-0">
+                {% for x in pangia_param %}
+                <tr>
+                    <td><strong>{{ form[x].label.text }}</strong></td>
+                    <td>
+                    {{ form[x](placeholder=form[x].label.text) }}
+                    </td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+
+        {{ form.submit(class="btn btn-primary") }}
+
+        </form>
+
+    {% endif %}
+
+</div>
+{% endblock %}
+
+{% block app_more_scripts %}{% endblock %}

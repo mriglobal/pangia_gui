@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% block app_layout %}
+<div class="login-wrapper">
+<div class="login">
+    <div class="card border-light mb-3">
+        <div class="card-header">
+            <!--<div class="float-sm-right"><a href="/">Home</a> | Register</div>-->
+            <h2>PanGIA</h2>
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">Sign In</h5>
+            <div class="card-text">
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                    {% if messages %}
+                        {% for category, message in messages %}
+                <div class="alert alert-warning alert-{{ category }} alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    {{ message }}
+                </div>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+                <form action="" method="post" novalidate>
+                    {{ form.hidden_tag() }}
+                    <p>
+                        {% if not form.username.errors %}
+                        {{ form.username(class="form-control", placeholder='Username', size=32) }}
+                        {% else %}
+                        {{ form.username(class="form-control is-invalid", placeholder='Username', size=32) }}
+                        {% endif %}
+                        <span class="invalid-feedback">This field is required.</span>
+                    </p>
+                    <p>
+                        {% if not form.password.errors %}
+                        {{ form.password(class="form-control", placeholder='Password', size=32) }}
+                        {% else %}
+                        {{ form.password(class="form-control is-invalid", placeholder='Password', size=32) }}
+                        {% endif %}
+                        <span class="invalid-feedback">This field is required</span>
+                    </p>
+                    <p class="form-check">
+                        <label class="form-check-label">
+                            {{ form.remember_me(class_="form-check-input") }} {{ form.remember_me.label }}
+                        </label>
+                    </p>
+                    <p>{{ form.submit(class="btn btn-primary") }}</p>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+{% endblock %}

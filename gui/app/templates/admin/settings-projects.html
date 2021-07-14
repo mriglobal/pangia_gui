@@ -1,0 +1,88 @@
+    <div id="settings-project">
+		<div class="card-header bg-ngreen shadow"><h3 class="m-0 p-0">Projects <i class="fas fa-question-circle input-help"></i></h3></div>
+		<table class="table table-striped shadow">
+			<thead class="thead-dark">
+				<tr>
+					<th scope="col">&nbsp;</th>
+					<th scope="col" width="200">Name</th>
+					<th scope="col">Description</th>
+					<th scope="col" width="200">Slug</th>
+					<th scole="col" width="80">Parent</th>
+					<th scope="col" width="80">Order</th>
+					<th scope="col" width="80">Archived</th>
+					<th scope="col" width="80">Deleted</th>
+                    <th scope="col" width="100"></th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for cat in categories %}
+				<tr>
+					<th>{{ cat.id }}</th>
+					<td>{{ cat.name }}</td>
+					<td>{{ cat.description }}</td>
+					<td>{{ cat.slug }}</td>
+					<td>{{ cat.parent_id }}</td>
+					<td>{{ cat.order }}</td>
+					<td>{{ cat.is_archived }}</td>
+					<td>{{ cat.is_deleted }}</td>
+                    <td>
+                        <a href="#" class="btn btn-primary"><i class="fas fa-edit"></i></a>
+                        <a href="#" class="btn btn-danger btn-muted"><i class="fas fa-trash-alt"></i></a>
+                    </td>
+				</tr>
+				{% endfor %}
+				<form action="" method="post" novalidate>
+					{{ form.hidden_tag() }}
+				<tr>
+					<td>&nbsp;</td>
+					<td>
+						{% if not form.name.errors %}
+                        {{ form.name(class="form-control", placeholder='Name') }}
+                        {% else %}
+                        {{ form.name(class="form-control is-invalid", placeholder='Name') }}
+                        {% endif %}
+                        <span class="invalid-feedback">Name is required.</span>
+					</td>
+					<td>
+                        {{ form.description(class="form-control", placeholder='Description') }}
+					</td>
+					<td>
+						<div class="d-flex">
+						{% if not form.slug.errors %}
+                        {{ form.slug(class="form-control", placeholder='Slug', size=10) }}
+                        {% else %}
+                        {{ form.slug(class="form-control is-invalid", placeholder='Slug') }}
+                        {% endif %}<a style="cursor:pointer;" role="button" tabindex="0"  data-toggle="popover" data-trigger="focus" data-html="true" data-placement="right" data-content="Slugs are shorthand names for projects. These are used in the url to access the associated project. <br><u><b>They need to be alpha numeric and contain no spaces<b></u>">
+                            <i class="fas fa-question-circle input-help"></i></a>
+						</div>
+                        <span class="invalid-feedback">Unique slug required.</span>
+					</td>
+					<td>
+						<div class="d-flex">
+						{% if not form.parent_id.errors %}
+                        {{ form.parent_id(class="form-control", placeholder='0') }}
+                        {% else %}
+                        {{ form.parent_id(class="form-control is-invalid", placeholder='0') }}
+                        {% endif %}
+                            <a style="cursor:pointer;" role="button" tabindex="0"  data-toggle="popover" data-trigger="focus" data-placement="right" data-content="Projects can be nested. If you are adding a sub project enter the id (number in the left most column) of the parent project. Leave parent as 0 if this is a top level project.">
+                            <i class="fas fa-question-circle input-help"></i></a>
+						</div>
+                        <span class="invalid-feedback">Required. Enter 0 for no parent.</span>
+					</td>
+					<td>
+						<div class="d-flex">
+						{% if not form.order.errors %}
+                        {{ form.order(class="form-control", placeholder='0') }}
+                        {% else %}
+                        {{ form.order(class="form-control is-invalid", placeholder='0') }}
+                        {% endif %}<a style="cursor:pointer;" role="button" tabindex="0"  data-toggle="popover" data-trigger="focus" data-placement="right" data-content="Order number determines which projects are displayed first. If multiple projects have the same order it will order next by project name. (I'll look into doing a drag and drop reorder later)">
+                            <i class="fas fa-question-circle input-help"></i></a>
+						</div>
+                        <span class="invalid-feedback">Required</span>
+					</td>
+					<td colspan="2" class="text-right">{{ form.submit(class="btn btn-primary") }}</td>
+				</tr>
+				</form>
+			</tbody>
+		</table>
+	</div>

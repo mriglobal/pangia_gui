@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block app_styles %}{% endblock %}
+{% block app_layout %}
+<div class="grid-container-one">
+	<div class="sidebar">
+        {% include "include/sidebar.html" %}
+    </div>
+	<div class="topnav">
+		{% include "include/topnav.html" %}
+	</div>
+	<div class="main">
+		{% block app_main_content %}{% endblock %}
+    </div>
+</div>
+{% endblock %}
+{% block app_scripts %}{% block app_more_scripts %}{% endblock %}{% endblock %}

@@ -1,0 +1,54 @@
+{% extends "one_column.html" %}
+{% block app_styles %}{% endblock %}
+{% block app_main_content %}
+<div class="p-5">
+
+        {% include "include/messages.html" %}
+
+        <div class="card-header bg-ngreen shadow d-flex mb-3">
+            <div class="mr-auto"><h3>Fastq Files</h3></div>
+            <div class="btn-group ml-auto" role="group" aria-label="Button group with nested dropdown">
+                <!--<button type="button" class="btn btn-secondary" disabled=""><i class="fas fa-th-list px-2 c-dark"></i></button>
+                <button type="button" class="btn btn-secondary"><i class="fas fa-th px-2 c-dark"></i></button>-->
+                <div class="btn-group" role="group">
+                    <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-sort-alpha-down px-2 c-dark"></i>
+                    </button>
+                    <div class="dropdown-menu" style="margin-right: 40px;" aria-labelledby="btnGroupDrop1">
+                        <a class="dropdown-item c-dark" href="?sort=date_up">Date Added: Asc</a>
+                        <a class="dropdown-item c-dark" href="?sort=date_down">Date Added: Desc</a>
+                        <a class="dropdown-item c-dark" href="?sort=az_up">Name: Asc</a>
+                        <a class="dropdown-item c-dark" href="?sort=az_down">Name: Desc</a>
+                    </div>
+                </div>
+                <a href="{{ url_for('main.add_file', proj_slug=project) }}" class="btn btn-primary ml-2">Add New File</a>
+            </div>
+        </div>
+
+        {% for f in files %}
+        <div class="card-deck">
+            <div class="card mb-2 shadow">
+                <div class="card-body">
+                    <dif style="float:right;">
+                        <a href="/item/{{ f.id }}" class="card-link"><i class="far fa-eye"></i> View Meta Data</a>
+                        <a href="/item/{{ f.id }}?p=results" class="card-link"><i class="fas fa-poll"></i> View Results</a>
+                        <!--<a disabled="disabled" class="card-link"><i class="fas fa-edit"></i> Edit File</a> -->
+                    </dif>
+                    <h4><small class="text-muted">{{ f.name }}</small></h4>
+                </div>
+                <div class="card-footer">
+                    <div style="float:right;">
+                        <!-- <a class="btn btn-secondary" disabled="disabled">Compress</a> -->
+                        <a href="/pangia_start?proj={{ project }}&item={{ f.id }}" class="btn btn-secondary">Run PanGIA</a>
+                    </div>
+                    <small class="text-muted">Uploaded <strong>{% for c in f.created_on.strftime('%Y-%m-%d %H:%M') %}{{ c }}{% endfor %}</strong></small>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+
+
+</div>
+{% endblock %}
+
+{% block app_more_scripts %}{% endblock %}

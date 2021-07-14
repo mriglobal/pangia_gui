@@ -1,0 +1,64 @@
+
+    <div id="settings-metatype">
+        {# META TYPES TABLE #}
+        <div class="card-header bg-ngreen shadow">
+            <div style="float:right;"><a href="#add" class="btn btn-primary">Add New</a></div>
+            <h3 class="m-0 p-0">
+            Meta Types
+            <a style="cursor:pointer;" role="button" tabindex="0"  data-toggle="popover" data-trigger="focus" data-placement="right" title="Meta Types" data-content="Meta types are used to group meta data together. This also helps to limit the number of user input variance there is in meta data. Meta data can also be restricted to only Yes/No or certain answers using meta types.">
+                <i class="fas fa-question-circle input-help"></i>
+            </a>
+            </h3>
+        </div>
+        <table class="table table-striped shadow">
+            <thead class="thead-dark">
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Value Type</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for type in meta_type %}
+            <tr>
+                <td>{{ type.name }}</td>
+                <td>{{ type.description }}</td>
+                <td>
+                    {% if type.value_type == 'boolean' %}
+                        Boolean: Yes, No
+                    {% elif type.value_type == 'choice' %}
+                        Choice: {{ type.choices }}
+                    {% else %}
+                        {{ type.value_type.capitalize() }}
+                    {% endif %}
+                </td>
+                <td style="width:100px;">
+                    <a href="#" class="btn btn-primary"><i class="fas fa-edit"></i></a>
+                    <a href="#" class="btn btn-danger btn-muted"><i class="fas fa-trash-alt"></i></a>
+                </td>
+            </tr>
+            {% endfor %}
+
+            {# META TYPES ADD FORM #}
+            <tr>
+
+                <form action="" method="post" novalidate>
+                {{ form.hidden_tag() }}
+                <td colspan="2">
+                    <strong>Meta Type Name:</strong> {{ form.name(class="form-control", placeholder="Meta Type Name") }}<br>
+                    <strong>Description:</strong> {{ form.description(class="form-control", placeholder="Description") }}<br>
+                    <div id="wrap_form-value_types" style="display: none;"><strong>Choices:</strong> <small>Comma separated</small> {{ form.choices(class="form-control", placeholder="Choices") }}</div>
+                </td>
+                <td colspan="2">
+                    <strong>Value Type:</strong>
+                    {{ form.value_type(class="form-control", onchange="isChoice(this)") }}<br>
+                    <p>{{ form.is_required() }} {{ form.is_required.label }} </p>
+                    {{ form.submit(class="btn btn-primary") }}
+                </td>
+                </form>
+                <a id="add"></a>
+            </tr>
+            </tbody>
+        </table>
+    </div>

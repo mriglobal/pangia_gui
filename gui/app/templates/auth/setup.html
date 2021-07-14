@@ -1,0 +1,100 @@
+{% extends "base.html" %}
+{% block app_layout %}
+<div class="login-wrapper">
+<div class="login">
+    <div class="card border-light mb-3">
+        <div class="card-header">
+            <!--<div class="float-sm-right"><a href="/">Home</a> | Register</div>-->
+            <h2>PanGIA Setup</h2>
+        </div>
+        <div class="card-body">
+
+        {% if complete == True %}
+
+
+            <h5 class="card-title">PanGIA setup complete</h5>
+            <div class="card-text">
+                <p><strong>Next steps instructions:</strong></p>
+                <ul>
+                    <li>Go to Settings > General.</li>
+                    <li>Change any general settings such as pandora directory and save file directory.</li>
+                    <li>Alter default PanGIA settings.</li>
+                    <li>Go to Settings > Projects.</li>
+                    <li>Add a project page to upload experiment files.</li>
+                    <li>Go to Users.</li>
+                    <li>Add new non administrative user.</li>
+                    <li>Go to Projects > "Your added project".</li>
+                    <li>Click on Add New File. Follow prompts to add fastq.</li>
+                    <li>Click on Run PanGIA for the file you just uploaded.</li>
+                </ul>
+                <a href="/" class="btn btn-primary">Go to PanGIA</a>
+            </div>
+
+
+        {% else %}
+
+
+            <h5 class="card-title">Create new admin user</h5>
+            <div class="card-text">
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                    {% if messages %}
+                        {% for category, message in messages %}
+                <div class="alert alert-warning alert-{{ category }} alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    {{ message }}
+                </div>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+                <form action="" method="post" novalidate>
+                    {{ form.hidden_tag() }}
+                    <p>
+                        {% if not form.username.errors %}
+                        {{ form.username(class="form-control", placeholder='Admin Username *', size=32) }}
+                        {% else %}
+                        {{ form.username(class="form-control is-invalid", placeholder='Admin Username *', size=32) }}
+                        {% endif %}
+                        <span class="invalid-feedback">This field is required.</span>
+                    </p>
+                    <p>
+                        {% if not form.password.errors %}
+                        {{ form.password(class="form-control", placeholder='Admin Password *', size=32) }}
+                        {% else %}
+                        {{ form.password(class="form-control is-invalid", placeholder='Admin Password *', size=32) }}
+                        {% endif %}
+                        <span class="invalid-feedback">This field is required</span>
+                    </p>
+                    <p>
+                        {{ form.fname(class="form-control", placeholder="First Name") }}
+                        {{ form.lname(class="form-control", placeholder="Last Name") }}
+                    </p>
+                    <p>
+                        {% if not form.email.errors %}
+                        {{ form.email(class="form-control", placeholder='Email Address', size=32) }}
+                        {% else %}
+                        {{ form.email(class="form-control is-invalid", placeholder='Email Address *', size=32) }}
+                        {% endif %}
+                        <span class="invalid-feedback">This field is required</span>
+                    </p>
+                    <p class="form-check">
+                        <label class="form-check-label">
+                            {{ form.defaultdata(class_="form-check-input", checked=True) }} {{ form.defaultdata.label }}
+                        </label>
+                        <br>
+                        <span style="font-size:11px;line-height:12px;color:#666;">This will install the default settings for PanGIA GUI. If this is not selected, make sure to add a File Template in Settings for the .fastq files or you will not be able to upload files. Then be sure to create a new Project page to upload files to.</span>
+                    </p>
+                    <p>{{ form.submit(class="btn btn-primary") }}</p>
+                </form>
+            </div>
+
+
+        {% endif %}
+
+
+        </div>
+    </div>
+</div>
+</div>
+{% endblock %}

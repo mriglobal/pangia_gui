@@ -1,0 +1,27 @@
+<div class="mri-branding"><img src="/static/images/MRIGLogo_white.png" alt="MRIGlobal" height="40"></div>
+<div class="d-flex justify-content-center logo m-0 p-0">
+    <!--
+    <div class="p-2"><img src="/static/images/pandoras_box.png" width="40" height="40" alt=""></div>
+    <div class="p-2"><h2>PanGIA</h2></div>
+    -->
+    <div><img src="/static/images/PanGIA_logo.jpg" width="325" /></div>
+</div>
+<div class="accordion" id="sidebarAcordion">
+    <div class="list-group list-group-flush">
+        <a href="/" class="list-group-item list-group-item-action"><i class="fas fa-tachometer-alt pr-3"></i> Dashboard</a>
+        <a class="list-group-item list-group-item-action" type="button" data-toggle="collapse" data-target="#collapseProject"><i class="fas fa-project-diagram pr-3"></i> Projects</a>
+        <div class="subnav-sidebar collapse" id="collapseProject" aria-labelledby="headingOne" data-parent="#sidebarAcordion">
+            <div class="list-group list-group-flush">
+                {% for project in projects %}
+                <a href="/project/{{ project.slug }}" class="list-group-item"><i class="fas fa-caret-right pr-2"></i> {{ project.name }}</a>
+                {% endfor %}
+            </div>
+        </div>
+        <a href="/pangia" class="list-group-item list-group-item-action" ><i class="fas fa-caret-square-right pr-3"></i> PanGIA</a>
+        <a href="/real_time_pangia" class="list-group-item list-group-item-action"><i class="fas fa-cogs pr-3"></i> Real Time</a>
+        {% if is_admin == True %}
+        <a href="/users" class="list-group-item list-group-item-action"><i class="fas fa-users pr-3"></i> Users</a>
+        <a href="{{ url_for('main.settings_page') }}" class="list-group-item list-group-item-action"><i class="fas fa-toolbox pr-3"></i> Settings</a>
+        {% endif %}
+    </div>
+</div>

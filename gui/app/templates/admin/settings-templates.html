@@ -1,0 +1,53 @@
+
+    <div id="settings-filetemplate">
+        {# FILE TEMPLATE TABLE #}
+        <div class="card-header bg-ngreen shadow">
+            <h3 class="p-0 m-0">File Templates
+            <a style="cursor:pointer;" role="button" tabindex="0"  data-toggle="popover" data-trigger="focus" data-placement="right" title="File Templates" data-content="File templates are layouts of meta data commonly associated to different file types. If fastqs commonly have x, y, and z meta data you can add those meta types to the file template and require that data on upload.">
+                <i class="fas fa-question-circle input-help"></i>
+            </a>
+            </h3>
+        </div>
+        <table class="table table-striped shadow">
+            <thead class="thead-dark">
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>File Extensions</th>
+                <th>Meta Types</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for tmplt in meta_temp %}
+            <tr>
+                <td>{{ tmplt.name }}</td>
+                <td>{{ tmplt.description }}</td>
+                <td>{{ tmplt.file_ext }}</td>
+                <td>{% for x in tmplt.metatypes %}{{ x.get_name() }}, {% endfor %}</td>
+                <td style="width:100px;">
+                    <a href="#" class="btn btn-primary"><i class="fas fa-edit"></i></a>
+                    <a href="#" class="btn btn-danger btn-muted"><i class="fas fa-trash-alt"></i></a>
+                </td>
+            </tr>
+            {% endfor %}
+
+            {# FILE TEMPLATE ADD FORM #}
+            <tr>
+                <form action="" method="post" novalidate>
+                {{ form.hidden_tag() }}
+                <td colspan="3">
+                    {{ form.name(class="form-control", placeholder="Template Name") }}<br>
+                    {{ form.description(class="form-control", placeholder="Description") }}<br>
+                    {{ form.file_ext(class="form-control", placeholder="File Extensions (.fastq, .docx)") }}<br>
+                    <small>Comma separated file extensions. Use "*" for all file extensions.</small>
+                </td>
+                <td colspan="2">
+                    {{ form.metatypes(class="form-control") }}<br>
+                    {{ form.submit(class="btn btn-primary") }}
+                </td>
+                </form>
+            </tr>
+            </tbody>
+        </table>
+    </div>

@@ -1,0 +1,79 @@
+{% extends "one_column.html" %}
+{% block app_styles %}{% endblock %}
+{% block app_main_content %}
+<div class="p-5">
+
+    {% include "include/messages.html" %}
+
+    <ul class="nav nav-tabs mb-3">
+        <li class="nav-item"><a class="nav-link" href="/item/{{ item.id }}">Fastq Information</a></li>
+        <li class="nav-item"><a class="nav-link active" href="/item/{{ item.id }}?p=results">Results</a></li>
+    </ul>
+
+    <div class="card-header bg-ngreen shadow">
+        <div class="float-right"><a href="{{ url_for('main.project_page', proj_slug=item.category.slug) }}">Back to {{ item.category.name }} project</a></div>
+        <h3>PanGIA Results</h3>
+    </div>
+    <div class="card-deck">
+        <div class="card my-2 shadow">
+            <div class="card-header">Results Info</div>
+
+            <table class="table shadow-none border-0">
+                <tr>
+                    <td>Run Name:</td>
+                    <td>{{ results.name }}</td>
+                </tr>
+                <tr>
+                    <td>Description:</td>
+                    <td>{{ results.description }}</td>
+                </tr>
+                <tr>
+                    <td>Result Location:</td>
+                    <td>{{ tsv_file.path }}</td>
+                </tr>
+                <tr>
+                    <td>Run Type:</td>
+                    <td>{{ results.results_type }}</td>
+                </tr>
+            </table>
+
+            <div class="card-footer">
+                <div class="float-right"><div class="float-right">
+                    <a href="#" class="btn btn-primary" style="cursor:pointer;" onclick="window.open('/pangia_vis/{{ results.id }}', 'vis_{{ results.id }}', 'height=800,width=1200')"><i class="fas fa-poll"></i> PanGIA Visualization</a>
+                </div></div>
+                <small class="text-muted">Created on <strong>{% for c in results.results_date.strftime('%Y-%m-%d %H:%M') %}{{ c }}{% endfor %}</strong> by <strong>{{ results.user.fname }} {{ results.user.lname }}</strong></small>
+            </div>
+        </div>
+    </div>
+
+    <div class="card-deck">
+        <div class="card mb-2 shadow">
+            <div class="card-header">
+                Results
+            </div>
+
+                {{ tsv_html }}
+
+            <div class="card-footer text-right">
+                <div><a href="{{ tsv_file }}" class="btn btn-primary">Download Results</a></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card-deck">
+        <div class="card mb-2 shadow">
+            <div class="card-header">
+                PanGIA Log
+            </div>
+            <div class="card-body" style="height:200px; overflow: scroll;">
+                <pre>{{ log_text }}</pre>
+            </div>
+            <div class="card-footer text-right">
+                <div><a href="{{ log_file }}" class="btn btn-primary">Download Logs</a></div>
+            </div>
+        </div>
+    </div>
+
+</div>
+{% endblock %}
+{% block app_more_scripts %}{% endblock %}

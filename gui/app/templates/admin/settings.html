@@ -1,0 +1,37 @@
+{% extends "one_column.html" %}
+{% block app_styles %}{% endblock %}
+{% block app_main_content %}
+<div class="p-5">
+    <ul class="nav nav-tabs mb-3">
+        <li class="nav-item"><a class="nav-link{% if title == 'General' %} active{% endif %}" href="/settings/general">General</a></li>
+        <li class="nav-item"><a class="nav-link{% if title == 'Projects' %} active{% endif %}" href="/settings/projects">Projects</a></li>
+        <li class="nav-item"><a class="nav-link{% if title == 'File-Templates' %} active{% endif %}" href="/settings/templates">File Templates</a></li>
+        <li class="nav-item"><a class="nav-link{% if title == 'Meta-Types' %} active{% endif %}" href="/settings/meta-types">Meta Types</a></li>
+    </ul>
+
+    {% include "include/messages.html" %}
+
+    {% if title == 'Projects' %}
+    {% include "admin/settings-projects.html" %}
+    {% elif title == 'File-Templates' %}
+    {% include "admin/settings-templates.html" %}
+    {% elif title == 'Meta-Types' %}
+    {% include "admin/settings-meta-types.html" %}
+    {% else %}
+    {% include "admin/settings-general.html" %}
+    {% endif %}
+
+</div>
+{% endblock %}
+{% block app_more_scripts %}
+<script type="text/javascript">
+    function isChoice(selectObject) {
+        var value = selectObject.value;
+        if (value == 'choice') {
+            document.getElementById('wrap_form-value_types').style.display = 'block';
+        } else {
+            document.getElementById('wrap_form-value_types').style.display = 'none';
+        }
+    }
+</script>
+{% endblock %}

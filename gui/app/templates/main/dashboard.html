@@ -1,0 +1,45 @@
+{% extends "one_column.html" %}
+{% block app_styles %}{% endblock %}
+{% block app_main_content %}
+<div class="p-5">
+
+    {% include "include/messages.html" %}
+
+	<p><h1> Hello, {{ the_user_name }}! </h1>
+    <h2> Welcome to your PanGIA Dashboard! </h2></p>
+
+    <hr>
+    <p><h5> Here are your most recent five PanGIA results from most to least recent: </h5></p>
+
+    {% for r in the_user_results %}
+        {% if r %}
+            <p><h6> Run completed at: {{ r.results_date }} <br>
+                     Link to the results below: </h6></p>
+            <a href="{{ url_for('main.item', item_id=r.items[0].id) }}?p=results&id={{ r.id }}">{{ r.name }} </a>
+            <p><h6> ---- </h6></p>
+        {% endif %}
+    {% endfor %}
+
+    <hr>
+
+    <p><h5> PanGIA runs that are currently ongoing: </h5></p>
+
+    {% for unfinished in pangia_runs_unfinished %}
+        {% if unfinished %}
+            <p><h6> Ongoing run: {{unfinished.name}} <br>
+                    Queued at: {{unfinished.task_date}} <br>
+                    <a href="{{ url_for('main.pangia_processing',task_id=unfinished.id) }}">Link to ongoing Job page </a>
+                    <p><h5> -------------------------------------------------------------- </h5></p>
+
+        {% endif %}
+    {% endfor %}
+
+    To view the status of all runs (finished or ongoing), please click the link below, or navigate to "PanGIA" via the sidebar on the left. </h6></p>
+    <a href="/pangia"> Link to Projects page </a>
+
+    <p><h5> Please click on the links below to access our readme page and familiarize yourself with operating this program. </h5></p>
+
+
+</div>
+{% endblock %}
+{% block app_more_scripts %}{% endblock %}

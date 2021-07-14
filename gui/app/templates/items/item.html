@@ -1,0 +1,31 @@
+{% extends "one_column.html" %}
+{% block app_styles %}{% endblock %}
+{% block app_main_content %}
+<div class="p-5">
+    <ul class="nav nav-tabs mb-3">
+        <li class="nav-item"><a class="nav-link{% if title == 'General' %} active{% endif %}" href="/item/{{ item_id }}">Fastq Information</a></li>
+        <li class="nav-item"><a class="nav-link{% if title == 'Projects' %} active{% endif %}" href="/item/{{ item_id }}?p=results">Results</a></li>
+    </ul>
+
+	{% include "include/messages.html" %}
+
+    {% if title == 'Fastq Results' %}
+    {% include "items/item_results.html" %}
+    {% else %}
+    {% include "items/item_info.html" %}
+    {% endif %}
+
+</div>
+{% endblock %}
+{% block app_more_scripts %}
+<script type="text/javascript">
+    function isChoice(selectObject) {
+        var value = selectObject.value;
+        if (value == 'choice') {
+            document.getElementById('wrap_form-value_types').style.display = 'block';
+        } else {
+            document.getElementById('wrap_form-value_types').style.display = 'none';
+        }
+    }
+</script>
+{% endblock %}

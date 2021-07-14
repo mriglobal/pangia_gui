@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block app_styles %}{% endblock %}
+{% block app_layout %}
+<div class="grid-container-two" class="">
+	<div class="sidebar">
+        {% include "include/sidebar.html" %}
+    </div>
+	<div class="topnav">
+		{% include "include/topnav.html" %}
+	</div>
+	<div class="main">
+		{% block app_main_content %}{% endblock %}
+    </div>
+	<div class="info-collapse">
+		<div class="info-collapse-btn"><button id="toggleInfo" type="button" class="btn btn-gray" aria-controls="Info Panel">Information</button></div>
+	</div>
+	<div id="info">
+        <div class="info-panel-content">
+            {% block app_info_content %}{% endblock %}
+        </div>
+	</div>
+</div>
+{% endblock %}
+{% block app_scripts %}
+<script>
+	$('#toggleInfo').click(function() {
+		//$('#grid-container-two').toggleClass('open');
+        document.querySelector('.grid-container-two').classList.toggle('grid-container-two--full')
+	});
+</script>
+{% block app_more_scripts %}{% endblock %}
+{% endblock %}

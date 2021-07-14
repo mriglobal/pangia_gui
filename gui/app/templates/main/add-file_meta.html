@@ -1,0 +1,53 @@
+{% extends "one_column.html" %}
+{% block app_styles %}{% endblock %}
+{% block app_main_content %}
+<div class="p-5">
+
+    {% include "include/messages.html" %}
+
+    <div class="card-header bg-ngreen shadow d-flex mb-3">
+        <div class="mr-auto"><h3>Add Files</h3></div>
+    </div>
+    {% if no_files == False %}
+    <h4>{{ file.name }}</h4>
+    <form method="POST" enctype="multipart/form-data" action="{{ url_for('main.add_file_meta', proj_slug=project) }}">
+    <table class="table table-striped shadow">
+    {% for x in meta %}
+        <tr>
+            <th>{{ x.name }}</th>
+            {% if x.is_bool == True or x.value_type == 'boolean' %}
+            <td>
+                <input class="form-check-input" type="checkbox" name="meta_{{ x.id }}" id="meta_{{ x.id }}" value="" checked="">
+            </td>
+            {% elif x.is_choice == True or x.value_type == 'choice' %}
+            <td>
+                 {% for c in x.choices.split(',') %}
+                 <div class="form-check">
+                 <label class="form-check-label">
+                 <input type="radio" class="form-check-input" name="meta_{{ x.id }}" id="meta_{{ x.id }}" value="{{ c }}" />
+                 {{ c }}
+                 </label>
+                 </div>
+                 {% endfor %}
+            </td>
+            {% else %}
+            <td>
+                <input type="text" class="form-control" placeholder="" name="meta_{{ x.id }}" id="meta_{{ x.id }}">
+            </td>
+            {% endif %}
+        </tr>
+    {% endfor %}
+    </table>
+    <input type="hidden" name="file_id" id="file_id" value="{{ file.id }}" />
+    <input type="hidden" name="template_id" id="template_id" value="{{ meta_template }}" />
+    <input type="submit" value="Update File">
+    </form>
+    {% else %}
+        <p>All files uploaded</p>
+        <button type="button" onclick="window.open('', '_self', ''); window.close();">Close</button>
+    {% endif %}
+
+</div>
+{% endblock %}
+
+{% block app_more_scripts %}{% endblock %}

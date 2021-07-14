@@ -1,0 +1,231 @@
+{% extends "one_column.html" %}
+{% block app_styles %}{% endblock %}
+{% block app_main_content %}
+<div class="p-5">
+
+    {% include "include/messages.html" %}
+
+    <div class="card-header bg-ngreen shadow c-white d-flex mb-3">
+        <div class="mr-auto"><h3>Run PanGIA</h3></div>
+    </div>
+
+    {# Select a project before selecting your files #}
+    {% if project == '' %}
+        <form method="GET" enctype="multipart/form-data" action="{{ url_for('main.pangia_start') }}">
+        <table class="table table-striped shadow">
+            <tr>
+            <td>
+            <select name="proj" id="proj">
+            {% for this_project in project_list %}
+            <option value="{{ this_project.slug }}">{{ this_project.name }}</option>
+            {% endfor %}
+            </select>
+            </td>
+            </tr>
+        </table>
+        <div class="float-right"><input type="submit" class="btn btn-primary" value="Next: PanGIA Run Info"></div>
+        </form>
+
+    {# Project has been selected. Now select pangia parameters #}
+    {% else %}
+
+        <form method="POST" enctype="multipart/form-data" action="{{ url_for('main.pangia_start') }}?proj={{ project.slug }}&item={{ item.id }}">
+        <h4>Run Info</h4>
+        <table class="table table-striped shadow">
+            <tr>
+                <td>Run Name *</td>
+                <td><input type="text" class="form-control" placeholder="Enter run name" ></td>
+            </tr>
+            <tr>
+                <td>Description</td>
+                <td><input type="text" class="form-control" placeholder="Enter run description" ></td>
+            </tr>
+            <tr>
+                <td>Sequencer Type <b class="c-lblue">*</b></td>
+                <td>
+                    <div class="form-check">
+                    <label class="form-check-label">
+                    <input type="radio" class="form-check-input" name="seq_type" id="seq_type" value="illumina" checked="checked" />
+                    Illumina
+                    </label><br>
+                    <label class="form-check-label">
+                    <input type="radio" class="form-check-input" name="seq_type" id="seq_type" value="nanopore" />
+                    Nanopore
+                    </label>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>Fastq <b class="c-lblue">*</b></td>
+                <td>
+                    <select name="fastq1" id="fastq1">
+                    <option value="">-- Select Fastq --</option>
+                    {% for file in files %}
+                        {% if file.id == item.id %}
+                        <option value="fastq1_{{ file.id }}" selected="selected">{{ file.name }}</option>
+                        {% else %}
+                        <option value="fastq1_{{ file.id }}">{{ file.name }}</option>
+                        {% endif %}
+                    {% endfor %}
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Paired Fastq</td>
+                <td>
+                    <select name="fastq1" id="fastq1">
+                    <option value="">-- Select Fastq --</option>
+                    {% for file in files %}
+                        <option value="fastq2_{{ file.id }}">{{ file.name }}</option>
+                    {% endfor %}
+                    </select>
+                </td>
+            </tr>
+        </table>
+
+        <!--
+        <h4 class="center">Additional analysis</h4>
+        <table class="table table-striped shadow">
+            <tr>
+                <td>
+                    <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="run_tmark"> &nbsp;&nbsp; TMARK-Markers
+                    <a style="cursor:pointer;" role="button" tabindex="0"  data-toggle="popover" data-trigger="focus" data-html="true" data-placement="right" data-content="TMARK info"><i class="fas fa-question-circle input-help"></i></a>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="run_annoy"> &nbsp;&nbsp; ANNOY
+                    <a style="cursor:pointer;" role="button" tabindex="0"  data-toggle="popover" data-trigger="focus" data-html="true" data-placement="right" data-content="ANNOY info"><i class="fas fa-question-circle input-help"></i></a>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="run_dt"> &nbsp;&nbsp; Decision Tree
+                    <a style="cursor:pointer;" role="button" tabindex="0"  data-toggle="popover" data-trigger="focus" data-html="true" data-placement="right" data-content="Decision Tree info"><i class="fas fa-question-circle input-help"></i></a>
+                    </div>
+                </td>
+            </tr>
+        </table>
+
+        <h4>Fastq Preprocessing</h4>
+        <table class="table table-striped shadow">
+            <tr>
+                <td colspan="2">
+                    <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="run_fastp"> &nbsp;&nbsp; Run Quality Trim and Filtering (Fastp)
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>Trim Quality Level</td>
+                <td><input type="text" value="5"></td>
+            </tr>
+            <tr>
+                <td>Average Quality Cutoff</td>
+                <td><input type="text" value="0"></td>
+            </tr>
+            <tr>
+                <td>Minimum Read Length</td>
+                <td><input type="text" value="50"></td>
+            </tr>
+            <tr>
+                <td>"N" Base Cutoff</td>
+                <td><input type="text" value="0"></td>
+            </tr>
+            <tr>
+                <td>Low Complexity Filter</td>
+                <td><input type="range" class="custom-range" id="customRange1"></td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="trim_polya">Trim polyA
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>Cut #bp from 5'-end</td>
+                <td><input type="text" value="0"></td>
+            </tr>
+            <tr>
+                <td>Cut #bp from 3'-end</td>
+                <td><input type="text" value="0"></td>
+            </tr>
+        </table>
+
+
+        <h4>PanGIA Settings</h4>
+        <table class="table table-striped shadow">
+            <tr>
+                <td>Seed length</td>
+                <td><input type="text" value="24"></td>
+            </tr>
+            <tr>
+                <td>Minimal aligned score</td>
+                <td><input type="text" value="60"></td>
+            </tr>
+            <tr>
+                <td>Scoring method</td>
+                <td>
+                    <div class="form-check">
+                    <input type="radio" name="scoring_method" value="standalone"> Standalone<br>
+                    <input type="radio" name="scoring_method" value="background"> Background<br>
+                    <input type="radio" name="scoring_method" value="combined"> Combined<br>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>Background</td>
+                <td>need background files</td>
+            </tr>
+            <tr>
+                <td>Relative abundance</td>
+                <td>
+                    <select name="relative_abundance">
+                        <option value="">Depth of coverage</option>
+                        <option value="">Read count</option>
+                        <option value="">Read count normalized by # of mapped references</option>
+                        <option value="">Rank specific read count normalized by references and identity</option>
+                        <option value="">Primary read count</option>
+                        <option value="">Total bases mapped</option>
+                    </select>
+                </td>
+            </tr>
+                <td>Minimal Score (0-1)</td>
+                <td><input type="range" class="custom-range" id="customRange1"></td>
+            </tr>
+            <tr>
+                <td>Minimal Read Count</td>
+                <td><input type="text" value="10"></td>
+            </tr>
+            <tr>
+                <td>Minimal Reads RSNB</td>
+                <td><input type="text" value="3"></td>
+            </tr>
+            <tr>
+                <td>Minimal Genome Cov</td>
+                <td><input type="text" value="0.005"></td>
+            </tr>
+            <tr>
+                <td>Minimal Depth</td>
+                <td><input type="text" value="0.01"></td>
+            </tr>
+            <tr>
+                <td>Minimal RS Depth</td>
+                <td><input type="text" value="0.001"></td>
+            </tr>
+        </table>
+        </form>
+    -->
+
+    {% endif %}
+
+</div>
+{% endblock %}
+
+{% block app_more_scripts %}{% endblock %}

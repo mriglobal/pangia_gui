@@ -1,0 +1,90 @@
+{% extends "one_column.html" %}
+{% block app_styles %}{% endblock %}
+{% block app_main_content %}
+<div class="p-5">
+
+        {% include "include/messages.html" %}
+
+        <div class="card-header bg-ngreen shadow c-ngreen d-flex">
+            <div class="mr-auto"><h3>PanGIA Queue</h3></div>
+            <div class="btn-group ml-auto" role="group" aria-label="Button group with nested dropdown">
+
+            </div>
+        </div>
+
+        {% if queue_len == 0 %}
+        <table class="table table-striped shadow">
+            <tr>
+                <td>No queued PanGIA Jobs</td>
+            </tr>
+        </table>
+
+        {% else %}
+        <table class="table table-striped shadow">
+			<thead class="thead-dark">
+				<tr>
+					<th scope="col">Run Name</th>
+					<th scope="col">Description</th>
+                    <th scope="col">Queue Date</th>
+                    <th scope="col">Queue Type</th>
+                    <th scope="col">Status</th>
+                    <th></th>
+				</tr>
+			</thead>
+			<tbody>
+                {% for q in queue %}
+                <tr class="table-active">
+                    <td>{{ q.name }}</td>
+                    <td>{{ q.description }}</td>
+                    <td>{% for c in q.task_date.strftime('%Y-%m-%d %H:%M') %}{{ c }}{% endfor %}</td>
+                    <td>{{ q.task_type }}</td>
+                    {% if q.get_progress() != 0 %}
+                    <td><span>Processing <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div></span></td>
+                    <td>
+                        {% if q.task_type == 'pangia' %}
+                        <a href="{{ url_for('main.pangia_processing', task_id=q.id) }}" class="btn btn-primary mr-4"><i class="far fa-eye"></i></a>
+                        <a href="{{ url_for('main.kill_job', task_id=q.id) }}" class="btn btn-danger btn-muted"><i class="fas fa-trash-alt"></i></a>
+                        {% elif q.task_type == 'run_real_time' %}
+                        <a href="{{ url_for('main.real_time_processing', task_id=q.id) }}" class="btn btn-primary">Real Time Results</a>
+                        {% endif %}
+                    </td>
+                    {% else %}
+                    <td>In Queue</td>
+                    <td><a href="{{ url_for('main.kill_job', task_id=q.id) }}" class="btn btn-danger btn-muted"><i class="fas fa-trash-alt"></i></a></td>
+                    {% endif %}
+                <tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% endif %}
+
+        <div class="card-header bg-ngreen c-ngreen shadow mt-3"><h3>PanGIA Results</h3></div>
+        <table class="table table-striped shadow">
+            <tr class="table-dark">
+                <td scope="col">Run Name</td>
+                <td scope="col">Project</td>
+                <td scope="col">Files</td>
+                <td scope="col">Queue Date</td>
+                <td scope="col">Run By</td>
+                <td scope="col"></td>
+            </tr>
+            {% for r in results %}
+            <tr>
+                <td>
+                    <b>Run Name:</b> {{ r.name }}<br>
+                    <b>Description:</b> {{ r.description }}
+                </td>
+                <td>{{ r.items[0].category.name }}</td>
+                <td>{% for x in r.items %}{{ x.name }}<br>{% endfor %}</td>
+                <td>{% for c in r.results_date.strftime('%Y-%m-%d %H:%M') %}{{ c }}{% endfor %}</td>
+                <td>{{ r.user.fname }} {{ r.user.lname }}</td>
+                <td><a href="{{ url_for('main.item', item_id=r.items[0].id) }}?p=results&id={{ r.id }}" class="btn btn-primary"><i class="fas fa-poll"></i> View Results</a></td>
+            <tr>
+            {% endfor %}
+        </table>
+
+
+</div>
+{% endblock %}
+
+{% block app_more_scripts %}{% endblock %}

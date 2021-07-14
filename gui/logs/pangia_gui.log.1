@@ -1,0 +1,112 @@
+2021-06-17 12:13:19,851 INFO: PanGIA startup [in /home/athomas/Documents/gui/pangia-flask-gui-brian/app/__init__.py:86]
+2021-06-17 12:16:22,631 INFO: PanGIA startup [in ./app/__init__.py:86]
+2021-06-17 13:16:21,607 ERROR: PanGIA Error [in ./app/tasks.py:335]
+Traceback (most recent call last):
+  File "./app/tasks.py", line 205, in run_real_time
+    time.sleep(20)
+  File "/home/athomas/miniconda3/envs/gui/lib/python3.7/site-packages/rq/timeouts.py", line 64, in handle_death_penalty
+    '({0} seconds)'.format(self._timeout))
+rq.timeouts.JobTimeoutException: Task exceeded maximum timeout value (3600 seconds)
+2021-06-18 12:47:08,512 INFO: PanGIA startup [in /home/athomas/Documents/gui/app/__init__.py:86]
+2021-06-18 12:47:24,989 ERROR: Exception on /item/1 [GET] [in /home/athomas/miniconda3/envs/gui/lib/python3.7/site-packages/flask/app.py:1892]
+Traceback (most recent call last):
+  File "/home/athomas/miniconda3/envs/gui/lib/python3.7/site-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/athomas/miniconda3/envs/gui/lib/python3.7/site-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/athomas/miniconda3/envs/gui/lib/python3.7/site-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/athomas/miniconda3/envs/gui/lib/python3.7/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/home/athomas/miniconda3/envs/gui/lib/python3.7/site-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/athomas/miniconda3/envs/gui/lib/python3.7/site-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/athomas/Documents/gui/app/main/routes.py", line 333, in item
+    'REL_ABUNDANCE'
+  File "/home/athomas/miniconda3/envs/gui/lib/python3.7/site-packages/pandas/io/parsers.py", line 676, in parser_f
+    return _read(filepath_or_buffer, kwds)
+  File "/home/athomas/miniconda3/envs/gui/lib/python3.7/site-packages/pandas/io/parsers.py", line 448, in _read
+    parser = TextFileReader(fp_or_buf, **kwds)
+  File "/home/athomas/miniconda3/envs/gui/lib/python3.7/site-packages/pandas/io/parsers.py", line 880, in __init__
+    self._make_engine(self.engine)
+  File "/home/athomas/miniconda3/envs/gui/lib/python3.7/site-packages/pandas/io/parsers.py", line 1114, in _make_engine
+    self._engine = CParserWrapper(self.f, **self.options)
+  File "/home/athomas/miniconda3/envs/gui/lib/python3.7/site-packages/pandas/io/parsers.py", line 1891, in __init__
+    self._reader = parsers.TextReader(src, **kwds)
+  File "pandas/_libs/parsers.pyx", line 532, in pandas._libs.parsers.TextReader.__cinit__
+pandas.errors.EmptyDataError: No columns to parse from file
+2021-06-18 12:47:34,322 INFO: PanGIA startup [in /home/athomas/Documents/gui/app/__init__.py:86]
+2021-06-18 12:48:32,592 INFO: PanGIA startup [in ./app/__init__.py:86]
+2021-06-18 12:50:59,948 INFO: PanGIA startup [in ./app/__init__.py:86]
+2021-06-18 13:53:55,896 INFO: PanGIA startup [in ./app/__init__.py:86]
+2021-06-18 14:38:10,100 INFO: PanGIA startup [in ./app/__init__.py:86]
+2021-06-18 14:38:28,505 ERROR: Exception on /pangia/processing/99be145c-cbe1-46f6-8024-63eb3e785425 [GET] [in /home/athomas/miniconda3/envs/gui/lib/python3.7/site-packages/flask/app.py:1892]
+Traceback (most recent call last):
+  File "/home/athomas/miniconda3/envs/gui/lib/python3.7/site-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/athomas/miniconda3/envs/gui/lib/python3.7/site-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/athomas/miniconda3/envs/gui/lib/python3.7/site-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/athomas/miniconda3/envs/gui/lib/python3.7/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/home/athomas/miniconda3/envs/gui/lib/python3.7/site-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/athomas/miniconda3/envs/gui/lib/python3.7/site-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/athomas/Documents/gui/app/main/routes.py", line 375, in pangia_processing
+    log_file = '{}/{}.pangia.log'.format(options['tmp_dir'], options['file_stem'])
+KeyError: 'tmp_dir'
+2021-06-18 14:39:03,005 ERROR: Exception on /pangia/processing/99be145c-cbe1-46f6-8024-63eb3e785425 [GET] [in /home/athomas/miniconda3/envs/gui/lib/python3.7/site-packages/flask/app.py:1892]
+Traceback (most recent call last):
+  File "/home/athomas/miniconda3/envs/gui/lib/python3.7/site-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/athomas/miniconda3/envs/gui/lib/python3.7/site-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/athomas/miniconda3/envs/gui/lib/python3.7/site-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/athomas/miniconda3/envs/gui/lib/python3.7/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/home/athomas/miniconda3/envs/gui/lib/python3.7/site-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/athomas/miniconda3/envs/gui/lib/python3.7/site-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/athomas/Documents/gui/app/main/routes.py", line 375, in pangia_processing
+    log_file = '{}/{}.pangia.log'.format(options['tmp_dir'], options['file_stem'])
+KeyError: 'tmp_dir'
+2021-06-18 14:43:44,325 ERROR: Exception on /pangia/processing/99be145c-cbe1-46f6-8024-63eb3e785425 [GET] [in /home/athomas/miniconda3/envs/gui/lib/python3.7/site-packages/flask/app.py:1892]
+Traceback (most recent call last):
+  File "/home/athomas/miniconda3/envs/gui/lib/python3.7/site-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/athomas/miniconda3/envs/gui/lib/python3.7/site-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/athomas/miniconda3/envs/gui/lib/python3.7/site-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/athomas/miniconda3/envs/gui/lib/python3.7/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/home/athomas/miniconda3/envs/gui/lib/python3.7/site-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/athomas/miniconda3/envs/gui/lib/python3.7/site-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/athomas/Documents/gui/app/main/routes.py", line 375, in pangia_processing
+    log_file = '{}/{}.pangia.log'.format(options['tmp_dir'], options['file_stem'])
+KeyError: 'tmp_dir'
+2021-06-18 15:38:09,153 ERROR: PanGIA Error [in ./app/tasks.py:335]
+Traceback (most recent call last):
+  File "./app/tasks.py", line 205, in run_real_time
+    time.sleep(20)
+  File "/home/athomas/miniconda3/envs/gui/lib/python3.7/site-packages/rq/timeouts.py", line 64, in handle_death_penalty
+    '({0} seconds)'.format(self._timeout))
+rq.timeouts.JobTimeoutException: Task exceeded maximum timeout value (3600 seconds)
+2021-06-18 15:38:10,242 INFO: PanGIA startup [in ./app/__init__.py:86]
+2021-06-18 16:38:09,191 ERROR: PanGIA Error [in ./app/tasks.py:335]
+Traceback (most recent call last):
+  File "./app/tasks.py", line 205, in run_real_time
+    time.sleep(20)
+  File "/home/athomas/miniconda3/envs/gui/lib/python3.7/site-packages/rq/timeouts.py", line 64, in handle_death_penalty
+    '({0} seconds)'.format(self._timeout))
+rq.timeouts.JobTimeoutException: Task exceeded maximum timeout value (3600 seconds)
+2021-06-21 11:27:48,597 INFO: PanGIA startup [in /home/athomas/Documents/gui/app/__init__.py:86]
+2021-07-12 10:46:38,764 INFO: PanGIA startup [in /home/athomas/Documents/gui/app/__init__.py:86]
+2021-07-12 10:56:17,950 INFO: PanGIA startup [in /home/athomas/Documents/gui/app/__init__.py:86]

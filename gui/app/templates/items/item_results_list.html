@@ -1,0 +1,43 @@
+{% extends "one_column.html" %}
+{% block app_styles %}{% endblock %}
+{% block app_main_content %}
+<div class="p-5">
+
+    {% include "include/messages.html" %}
+
+    <ul class="nav nav-tabs mb-3">
+        <li class="nav-item"><a class="nav-link" href="/item/{{ item.id }}">Fastq Information</a></li>
+        <li class="nav-item"><a class="nav-link active" href="/item/{{ item.id }}?p=results">Results</a></li>
+    </ul>
+
+    <div class="card-header bg-ngreen shadow">
+        <div class="float-right"><a href="{{ url_for('main.project_page', proj_slug=item.category.slug) }}">Back to {{ item.category.name }} project</a></div>
+        <h3>PanGIA Results</h3>
+    </div>
+    <table class="table table-striped shadow">
+        <tr class="table-dark">
+            <td scope="col">Run Name</td>
+            <td scope="col">Project</td>
+            <td scope="col">Files</td>
+            <td scope="col">Queue Date</td>
+            <td scope="col">Run By</td>
+            <td scope="col"></td>
+        </tr>
+        {% for r in item.results %}
+        <tr>
+            <td>
+                <b>Run Name:</b> {{ r.name }}<br>
+                <b>Description:</b> {{ r.description }}
+            </td>
+            <td>{{ r.items[0].category.name }}</td>
+            <td>{% for x in r.items %}{{ x.name }}<br>{% endfor %}</td>
+            <td>{{ r.results_date }}</td>
+            <td>{{ r.user.username }}</td>
+            <td><a href="/item/{{ item.id }}?p=results&id={{ r.id }}" class="card-link"><i class="fas fa-poll"></i> View Results</a></td>
+        <tr>
+        {% endfor %}
+    </table>
+
+</div>
+{% endblock %}
+{% block app_more_scripts %}{% endblock %}

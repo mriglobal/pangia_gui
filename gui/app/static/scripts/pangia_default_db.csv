@@ -1,0 +1,7 @@
+Type,Name,Description,Value,Options,Is_Required,Associations
+MetaTemplate,Fastq,Default template for fastq files,".fastq,.fa",,,
+MetaType,Spike In,Organism(s) that were added to the sample,string,,,Fastq
+MetaType,Sequencer Type,What machine was this run on.,choice,"Illumina,Minion",,Fastq
+MetaType,Sample Date,The date the sample was collected or run.,date,,,Fastq
+MetaType,Spike Concentration,Concentration of the spike in organism added to the sample.,string,,,Fastq
+MetaType,Is Control Sample,Is this sample a control to test other samples against.,boolean,,,Fastq

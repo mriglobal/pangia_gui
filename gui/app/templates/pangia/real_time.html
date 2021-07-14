@@ -1,0 +1,41 @@
+{% extends "one_column.html" %}
+{% block app_styles %}{% endblock %}
+{% block app_main_content %}
+<div class="p-5">
+
+    {% include "include/messages.html" %}
+
+
+    <form method="POST" enctype="multipart/form-data">
+    {{ form.hidden_tag() }}
+    <input type="hidden" name="seq_type" id="seq_type" value="nanopore" />
+
+    <div class="card mb-3">
+        <div class="card-header">
+            <h3>Real Time PanGIA - Run Information</h3>
+            <p>
+                Use real Real-Time PanGIA as you are producing sequences with Guppy to analyze results as you produce them.<br>
+                Enter the output folder for Guppy fastqs below and they will be run in batches until you stop the real time process.
+            </p>
+        </div>
+
+        <table class="table table-striped shadow-none border-0 mb-0">
+            {% for x in run_param %}
+            <tr>
+                <td><strong>{{ form[x].label.text }}</strong></td>
+                <td>
+                {{ form[x](placeholder=form[x].label.text) }}
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+    {{ form.submit(class="btn btn-primary") }}
+
+    </form>
+
+</div>
+{% endblock %}
+
+{% block app_more_scripts %}{% endblock %}

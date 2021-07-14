@@ -1,0 +1,83 @@
+
+    <div id="settings-general">
+        <div class="card">
+            <div class="card-header bg-ngreen shadow">
+                <h3 class="m-0 p-0">
+                PanGIA Settings
+                </h3>
+            </div>
+        </div>
+
+
+        <form method="POST" enctype="multipart/form-data">
+        {{ form.hidden_tag() }}
+
+        <div class="card shadow my-3">
+            <h4 class="card-header">Application Settings</h4>
+            <table class="table table-striped shadow-none border-0 mb-0">
+                <!--<tr><td colspan="2"><p class="card-text text-muted">Settings for the application, including local directories for PanGIA, your database and where you want files saved.</p></td></tr>-->
+                {% for x in system_param %}
+                <tr>
+                    <td><strong>{{ form[x].label.text }}</strong></td>
+                    <td>
+                    {{ form[x](placeholder=form[x].label.text) }}
+                    </td>
+                </tr>
+                {% endfor %}
+                <tr>
+                    <td colspan="2" class="text-center">
+                    {{ form.submit(class="btn btn-primary") }}
+                    <a href="{{ url_for('main.settings_page') }}" class="btn btn-secondary">Clear Changes</a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="card shadow mb-3">
+            <h4 class="card-header">Preprocessing</h4>
+            <table class="table table-striped shadow-none border-0 mb-0">
+                <!--<tr><td colspan="2"><p class="card-text text-muted">Set the default settings for preprocessing with Fastp.</p></td></tr>-->
+                {% for x in pre_param %}
+                <tr>
+                    <td><strong>{{ form[x].label.text }}</strong></td>
+                    <td>
+                    {{ form[x](placeholder=form[x].label.text) }}
+                    </td>
+                </tr>
+                {% endfor %}
+                <tr>
+                    <td colspan="2" class="text-center">
+                    {{ form.submit(class="btn btn-primary") }}
+                    <a href="{{ url_for('main.settings_page') }}" class="btn btn-secondary">Clear Changes</a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="card shadow">
+            <h4 class="card-header">PanGIA Run Parameters</h4>
+            <table class="table table-striped shadow-none border-0 mb-0">
+                <!--<tr><td colspan="2"><p class="card-text text-muted">Set the default PanGIA run settings for the results output</p></td></tr>-->
+                {% for x in pangia_param %}
+                <tr>
+                    <td><strong>{{ form[x].label.text }}</strong></td>
+                    <td>
+                    {{ form[x](placeholder=form[x].label.text) }}
+                    </td>
+                </tr>
+                {% endfor %}
+                <tr>
+                    <td colspan="2" class="text-center">
+                    {{ form.submit(class="btn btn-primary") }}
+                    <a href="{{ url_for('main.settings_page') }}" class="btn btn-secondary">Clear Changes</a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+
+
+        </form>
+
+
+    </div>

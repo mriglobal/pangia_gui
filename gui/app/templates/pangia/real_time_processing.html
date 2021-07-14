@@ -1,0 +1,49 @@
+{% extends "one_column.html" %}
+{% block app_styles %}
+    {{ css_resources|indent(4)|safe }}
+{% endblock %}
+{% block app_main_content %}
+<div class="p-5">
+
+        {% include "include/messages.html" %}
+
+        <div class="card-header bg-ngreen shadow d-flex">
+            <div class="mr-auto"><h3>Running Real Time PanGIA - {{ task.name }}</h3></div>
+            <div class="btn-group ml-auto" role="group" aria-label="Button group with nested dropdown">
+                <a href="{{ url_for('main.pangia') }}" class="btn btn-secondary mr-4">Back</a>
+                <a href="{{ url_for('main.kill_job', task_id=task.id) }}" class="btn btn-warning">Stop Running</a>
+            </div>
+        </div>
+        {% if plot_script != '' %}
+        <div class="card-deck">
+            <div class="card mb-2 shadow">
+                <div class="card-body">
+                    {{ plot_div|indent(4)|safe }}
+                </div>
+            </div>
+        </div>
+
+        {% else %}
+        <div class="card-deck">
+            <div class="card mb-2 shadow">
+                <div class="card-body">
+                    No PanGIA output has been created yet. If you just started this real time analysis, the first PanGIA
+                    output may still be running. If no results appear, please check the folder you specified when you
+                    started real time analysis for fastq files.
+                </div>
+            </div>
+        </div>
+        {% endif %}
+
+</div>
+{% endblock %}
+
+{% block app_more_scripts %}
+    {{ js_resources|indent(4)|safe }}
+    {{ plot_script|indent(4)|safe }}
+<script>
+setInterval(function() {
+  window.location.reload();
+}, 120000);
+</script>
+{% endblock %}

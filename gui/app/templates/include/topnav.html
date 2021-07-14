@@ -1,0 +1,26 @@
+<nav class="navbar navbar-expand-lg navbar-expand-md navbar-dark">
+    <a class="navbar-brand mr-auto" href="#">
+        <i class="fas fa-bars md-icon"></i>
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTop" aria-controls="navbarTop" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <h5 class="c-white pl-3 pt-2">Projects > Test Project</h5>
+    <div class="collapse navbar-collapse" id="navbarTop">
+        <span class="navbar-text pr-1 ml-auto">Hi, {{ current_user.fname }}</span>
+        <ul class="navbar-nav pr-2">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user-circle md-icon"></i></a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="/auth/logout"><i class="fas fa-sign-out-alt pr-2"></i> Logout</a>
+                    <div class="dropdown-divider"></div>
+                    <!--<a class="dropdown-item disabled"><i class="fas fa-user-cog pr-2"></i> Manage Profile</a>-->
+                </div>
+            </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="text" placeholder="Search (disabled)" disabled="">
+            <button class="btn btn-primary my-2 my-sm-0" type="submit" disabled=""><i class="fas fa-search"></i></button>
+        </form>
+    </div>
+</nav>

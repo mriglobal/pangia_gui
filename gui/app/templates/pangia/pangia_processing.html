@@ -1,0 +1,40 @@
+{% extends "one_column.html" %}
+{% block app_styles %}{% endblock %}
+{% block app_main_content %}
+<div class="p-5">
+
+        {% include "include/messages.html" %}
+
+        <div class="card-header bg-ngreen shadow d-flex">
+            <div class="mr-auto"><h3>Running Job - {{ task.name }}</h3></div>
+            <div class="btn-group ml-auto" role="group" aria-label="Button group with nested dropdown">
+                <a href="{{ url_for('main.pangia') }}">Back</a>
+            </div>
+        </div>
+
+        <div class="card-deck">
+            <div class="card mb-2 shadow">
+                <div class="card-body">
+                    <p><b>File(s):</b> {{ options['fastq_loc'] }}</p>
+                    <p><b>Description:</b><br> {{ options['description'] }}</p>
+                </div>
+                <div class="card-footer">
+                    <small class="text-muted">
+                        <pre>{{ log_text }}</pre>
+                    </small>
+                </div>
+            </div>
+        </div>
+
+
+
+</div>
+{% endblock %}
+
+{% block app_more_scripts %}
+<script>
+setInterval(function() {
+  window.location.reload();
+}, 15000);
+</script>
+{% endblock %}

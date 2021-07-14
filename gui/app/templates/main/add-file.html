@@ -1,0 +1,20 @@
+{% extends "one_column.html" %}
+{% block app_styles %}{% endblock %}
+{% block app_main_content %}
+<div class="p-5">
+
+    {% include "include/messages.html" %}
+
+    <div class="card-header bg-ngreen shadow d-flex mb-3">
+        <div class="mr-auto"><h3>Add Files</h3></div>
+    </div>
+
+    <form method="POST" enctype="multipart/form-data" action="{{ url_for('main.add_file', proj_slug=project) }}">
+        <input type="file" name="file[]" multiple="">
+        <input type="submit" value="Upload Files">
+    </form>
+
+</div>
+{% endblock %}
+
+{% block app_more_scripts %}{% endblock %}
