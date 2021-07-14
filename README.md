@@ -386,12 +386,6 @@ interface. Files uploaded through the GUI are copied into a new
 directory named after the Project in the local pangia/upload directory.
 
 <figure>
-<img src="gui/images_gui/Projects_and_Runs/current_project_demo.png">
-<figcaption>
-<em>project sidebar dropdown menu - leads to project file list</em>
-</figcaption>
-</figure>
-<figure>
 <img src="gui/images_gui/Projects_and_Runs/PanGIA_Projects_Main.png">
 <figcaption>
 <em>file list within a project</em>
@@ -414,13 +408,6 @@ menu option defaults to whatever file the Run Information page was
 accessed from. All General settings may be adjusted here: the interface
 is identical to that appearing in [**Section
 4.2.3.1**](#section-4231-general-settings).
-
-<figure>
-<img src="gui/images_gui/Projects_and_Runs/run_info_example_bmal100k_final.png">
-<figcaption>
-<em>selecting paired fastq files</em>
-</figcaption>
-</figure>
 
 ##### *Section 4.2.4.2)*: Exploring the Projects Tab
 
@@ -495,7 +482,12 @@ Real-Time PanGIA is initiated, the user must manually terminate the job
 as desired. Completed Real-Time jobs persist PanGIA results from the
 last job iteration.
 
-**Real-Time Run Info Image HERE**
+<figure>
+<img src="gui/images_gui/Projects_and_Runs/PanGIA_RealTime">
+<figcaption>
+<em>setting up a RealTime PanGIA run</em>
+</figcaption>
+</figure>
 
 ### **Section 4.3)**: **Examples of Usage**
 
@@ -506,15 +498,17 @@ settings. For this example, assume the Project ‘SOP\_Runs’ has already
 been established, and is accessible through the GUI sidebar as shown
 below.
 
-**SOP Runs Image HERE**
+<figure>
+<img src="gui/images_gui/Projects_and_Runs/current_project_demo.png">
+<figcaption>
+<em>project sidebar dropdown menu - leads to project file list</em>
+</figcaption>
+</figure>
 
 This link redirects to the file page associated with ‘SOP\_Runs’. For
 the purposes of this tutorial, assume that two .fastq files – named
 ‘BMal\_100000\_rep1\_R1’ and ‘BMal\_100000\_rep1\_R2’ – have already
-been uploaded to the Project. The file page for such a scenario appears
-below.
-
-**Example 1 fastq Uploads Page Image HERE**
+been uploaded to the Project.
 
 Clicking on the Run PanGIA buttons associated with either .fastq file
 directs to the Run PanGIA page. As discussed in [**Section
@@ -523,7 +517,12 @@ Information and General settings. Pressing the button associated with
 ‘BMal\_100000\_rep1\_R1’ directs to the Run Information page shown
 below.
 
-**Example 1 Run Information Image HERE**
+<figure>
+<img src="gui/images_gui/Projects_and_Runs/run_info_example_bmal100k_final.png">
+<figcaption>
+<em>selecting paired fastq files</em>
+</figcaption>
+</figure>
 
 This run has been given a name and description, and a selection for the
 ‘Paired Fastq’ has been made – in this case, ‘BMal\_100000\_rep1\_R2’.
@@ -531,20 +530,29 @@ None of the General settings on the Run PanGIA page need to be adjusted,
 as this is a default PanGIA run – so this job is ready to be executed by
 clicking on the Run PanGIA button at the bottom of the page!
 
-**Example 1 General Settings Image HERE**
-
 The PanGIA job is now running, which may be verified in a variety of
 ways. First, navigate to the command line terminal running the rq
 worker. It should look something like this:
 
-**Example 1 Worker Image HERE**
+<figure>
+<img src="gui/images_gui/Projects_and_Runs/rq_worker_printout.png">
+<figcaption>
+<em>typical printout in the rq worker terminal during a PanGIA run</em>
+</figcaption>
+</figure>
 
 The rq worker provides time-stamped logs for run status and allows the
 user to follow along with each compute stage, or troubleshoot. Heading
 back to the GUI, navigate to the Dashboard. It should look something
 like this:
 
-**Example 1 Ongoing Job Dashboard Image HERE**
+<figure>
+<img src="gui/images_gui/Projects_and_Runs/ongoing_job_dashboard.png">
+<figcaption>
+<em>the dashboard dynamically changes while PanGIA runs are
+ongoing/queued</em>
+</figcaption>
+</figure>
 
 The current job ‘BMAL100k’ is listed – and the link below the job
 directs to the Running Job page. If additional PanGIA runs were queued
@@ -552,16 +560,29 @@ behind ‘BMAL100k’, they would be listed here. The Running Job page is a
 run log, and should look similar to the rq worker printout, as seen
 below:
 
-**Example 1 Running Job Page Image HERE**
+<figure>
+<img src="gui/images_gui/Projects_and_Runs/ongoing_job_job_page.png">
+<figcaption>
+<em>the job log page - includes similar information to the rq worker
+during jobs/queued</em>
+</figcaption>
+</figure>
 
 After the job is finished, the Running Job page turns into a Results
 page. Job completion will be reflected in the PanGIA page of the GUI:
 
-**Example 1 Finished Job Page Image HERE**
-
-The Results page should look something like this:
-
-**Example 1 Results Page Image HERE**
+<figure>
+<img src="gui/images_gui/Projects_and_Runs/finished_run_jobs_page_example1.png">
+<figcaption>
+<em>the jobs page updating following run completion</em>
+</figcaption>
+</figure>
+<figure>
+<img src="gui/images_gui/Projects_and_Runs/updated_finjobs_page_example1.png">
+<figcaption>
+<em>the jobs page updating following run completion</em>
+</figcaption>
+</figure>
 
 Clicking the PanGIA Visualization button opens the Visualizer in a
 separate window. More detail concerning planned features are described
@@ -569,7 +590,12 @@ in [**Section 5**](#section-5-planned-visualizer-features), but the
 scatterplot for the static PanGIA run as described in this section
 should appear similar to the one depicted here:
 
-**Example 1 Vis Image HERE**
+<figure>
+<img src="gui/images_gui/Projects_and_Runs/vis_example1.png">
+<figcaption>
+<em>the visualized results of the run</em>
+</figcaption>
+</figure>
 
 ##### *Section 4.3.1.1)*: *Baseline Example Visualizer Usage and Analysis*
 
@@ -619,12 +645,23 @@ listed on the x-axis.
     single row of this table appears as a tool-tip when the mouse is
     hovered over the center of a dot in the scatterplot.
 
-**Example 1 Vis Analysis Table Image HERE**
+<figure>
+<img src="gui/images_gui/Projects_and_Runs/vis_datatable_example1.png">
+<figcaption>
+<em>the embedded datatable within the visualizer</em>
+</figcaption>
+</figure>
 
 5.  The tool-tip presents numerical results from a given row of the data
     table. In the below image, *Burkholderia pseudomallei* is shown.
 
-**Example 1 Tooltip Image HERE**
+<figure>
+<img src="gui/images_gui/Projects_and_Runs/upclose_hovertool.png">
+<figcaption>
+<em>the tooltip appears when the mouse is over the center of a
+datapoint</em>
+</figcaption>
+</figure>
 
 ## *Section 5)*: **Planned Visualizer Features**
 
@@ -649,4 +686,10 @@ widget features include:
 
 An example of the Visualizer as it will appear with widgets:
 
-**Future Vis Image HERE**
+<figure>
+<img src="gui/images_gui/Projects_and_Runs/scatterplot_wth_widgets.png">
+<figcaption>
+<em>the final visualizer will include multiple sliders, dynamic axis
+toggling, and other filtering tools</em>
+</figcaption>
+</figure>
