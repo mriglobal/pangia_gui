@@ -1,5 +1,5 @@
 ---
-title: "pangia_gui_sop"
+title: "PanGIA_GUI_README"
 author: "Gus Thomas"
 date: "7/13/2021"
 output: github_document
@@ -8,11 +8,6 @@ output: github_document
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
-
-<style>
-body {
-text-align: justify}
-</style>
 
 # **PanGIA GUI Manual:**
 
@@ -23,33 +18,33 @@ text-align: justify}
 ## **Table of Contents**
 ### 1. [Introduction](#section-1-introduction)
 ### 2. [Initial Download](#section-2-initial-download)
-|       **2.1**: [**PanGIA & PanGIA GUI**](#pangia-and-pangia-gui)
-|           *2.1.1*: [*Downloading from the Command Line*](#downloading-from-the-command-line)
-|           *2.1.2*: [*Downloading Manually*](#downloading-manually)
-|       **2.2**: [**Reference Databases**](#reference-databases)
+|       **2.1**: [**PanGIA & PanGIA GUI**](#section-21-pangia-and-pangia-gui)
+|           *2.1.1*: [*Downloading from the Command Line*](#section-211-downloading-from-the-command-line)
+|           *2.1.2*: [*Downloading Manually*](#section-212-downloading-manually)
+|       **2.2**: [**Reference Databases**](#section-22-reference-databases)
 ### 3. [Preparing the Compute Environment](#section-3-preparing-the-compute-environment)
-|       **3.1**: [**Preparing a Non-Dockerized Environment**](#preparing-a-non-dockerized-environment)
-|       **3.2**: [**Preparing a Dockerized Environment**](#preparing-a-dockerized-environment)
+|       **3.1**: [**Preparing a Non-Dockerized Environment**](#section-31-preparing-a-non-dockerized-environment)
+|       **3.2**: [**Preparing a Dockerized Environment**](#section-32-preparing-a-dockerized-environment)
 ### 4. [Using the GUI](#section-4-using-the-gui)
-|       **4.1**: [**Accessing the GUI**](#accessing-the-gui)
-|           *4.1.1*: [*Non-Dockerized Case*](#non-dockerized-case)
-|           *4.1.2*: [*Dockerized*](#dockerized-case)
-|       **4.2**: [**GUI Navigation**](#gui-navigation)
-|           *4.2.1*: [*Dashboard*](#dashboard)
-|           *4.2.2*: [*Users*](#users)
-|           *4.2.3*: [*Settings*](#settings)
-|               *4.2.3.1*: [*General Settings*](#general-settings)
-|               *4.2.3.2*: [*Project Settings*](#project-settings)
-|               *4.2.3.3*: [*File Template Settings*](#file-template-settings)
-|               *4.2.3.4*: [*Meta Type Settings*](#meta-type-settings)
-|           *4.2.4*: [*Projects*](#projects)
-|               *4.2.4.1*: [*Running PanGIA from the Projects Tab*](#running-pangia-from-the-projects-tab)
-|               *4.2.4.2*: [*Exploring the Projects Tab*](#exploring-the-projects-tab)
-|           *4.2.5*: [*PanGIA & PanGIA Results*](#pangia-pangia-results)
-|               *4.2.5.1*: [*Results Page*](#results-page)
-|           *4.2.6*: [*Real-Time PanGIA*](#real-time-pangia)
-|       **4.3**: [**Examples of Usage**](#examples-of-usage)
-|           *4.3.1*: [*Baseline Example*](#baseline-example)
+|       **4.1**: [**Accessing the GUI**](#section-41-accessing-the-gui)
+|           *4.1.1*: [*Non-Dockerized Case*](#section-411-non-dockerized-case)
+|           *4.1.2*: [*Dockerized*](#section-412-dockerized-case)
+|       **4.2**: [**GUI Navigation**](#section-42-gui-navigation)
+|           *4.2.1*: [*Dashboard*](#section-421-dashboard)
+|           *4.2.2*: [*Users*](#section-422-users)
+|           *4.2.3*: [*Settings*](#section-423-settings)
+|               *4.2.3.1*: [*General Settings*](#section-4231-general-settings)
+|               *4.2.3.2*: [*Project Settings*](#section-4232-project-settings)
+|               *4.2.3.3*: [*File Template Settings*](#section-4233-file-template-settings)
+|               *4.2.3.4*: [*Meta Type Settings*](#section-4234-meta-type-settings)
+|           *4.2.4*: [*Projects*](#section-424-projects)
+|               *4.2.4.1*: [*Running PanGIA from the Projects Tab*](#section-4241-running-pangia-from-the-projects-tab)
+|               *4.2.4.2*: [*Exploring the Projects Tab*](#section-4242-exploring-the-projects-tab)
+|           *4.2.5*: [*PanGIA & PanGIA Results*](#section-425-pangia-pangia-results)
+|               *4.2.5.1*: [*Results Page*](#section-4251-results-page)
+|           *4.2.6*: [*Real-Time PanGIA*](#section-426-real-time-pangia)
+|       **4.3**: [**Examples of Usage**](#section-43-examples-of-usage)
+|           *4.3.1*: [*Baseline Example*](#section-431-baseline-example)
 |           *4.3.2*: [*Example #2: Real-Time Case with T-MARK analysis*]
 |           *4.3.3*: [*Example #3: Decision Tree - All Results Mode*]
 ### 5. [Planned Visualizer Features](#section-5-planned-visualizer-features)
@@ -58,15 +53,15 @@ text-align: justify}
 
 This report contains instructions for the installation and use of the graphical interface designed for PanGIA. PanGIA is standalone and may be run independently from the command line. However, this forces the responsibilities of manual configuration and record keeping for each run entirely onto the user.
 
-This GUI companion to PanGIA makes the pathway to discovery more efficient and exciting by streamlining the run specification/execution process, providing a robust job queue, enabling real-time PanGIA processing, and constructing an intuitive, informative, dynamic visualization tool for result analysis. The GUI is composed of six parent pages: Dashboard, Users, Settings, Projects, PanGIA, and Real Time. If you have already completed PanGIA setup and are using this document as a GUI reference, please consult [**Section 4.2**](#gui-navigation) onward.
+This GUI companion to PanGIA makes the pathway to discovery more efficient and exciting by streamlining the run specification/execution process, providing a robust job queue, enabling real-time PanGIA processing, and constructing an intuitive, informative, dynamic visualization tool for result analysis. The GUI is composed of six parent pages: Dashboard, Users, Settings, Projects, PanGIA, and Real Time. If you have already completed PanGIA setup and are using this document as a GUI reference, please consult [**Section 4.2**](#section-42-gui-navigation) onward.
 
 ## *Section 2)*: **Initial Download**
 
 This section details the process of downloading PanGIA, the GUI, and curated reference databases necessary to run PanGIA.
 
-### **2.1**: **PanGIA and PanGIA GUI**
+### **Section 2.1)**: **PanGIA and PanGIA GUI**
 
-#### *2.1.1*: *Downloading from the Command Line*
+#### *Section 2.1.1)*: *Downloading from the Command Line*
 
 1.  Navigate to preferred local directory.
     
@@ -74,13 +69,13 @@ This section details the process of downloading PanGIA, the GUI, and curated ref
     
 3.  Repeat Step #2 for the PanGIA GUI, but clone from http://gitlab.mriglobal.org/bclark/pangia-flask-gui instead. Cloning the repository into a separate local directory is recommended.
     
-#### *2.1.2*: *Downloading Manually*
+#### *Section 2.1.2)*: *Downloading Manually*
 
 1. Go to GitLab pages at XXXX (PanGIA) and XXXX (PanGIA GUI).
 
 2. Download both and extract to preferred path for each.
 
-### **2.2**: **Reference Databases**
+### **Section 2.2)**: **Reference Databases**
 
 **Talk about ftp here**
 
@@ -88,11 +83,11 @@ This section details the process of downloading PanGIA, the GUI, and curated ref
 
 PanGIA requires a specific compute environment to satisfy its run-time dependencies. We consider two cases: an environment constructed locally within a specific Linux distribution, and a PanGIA-friendly Docker environment independent of the host machine.
 
-### **3.1**: **Preparing a Non-Dockerized Environment**
+### **Section 3.1)**: **Preparing a Non-Dockerized Environment**
 
 1. Install conda and the correct Linux distribution. See XXXX for details.
 
-2. In a terminal, navigate to PanGIA GUI directory created in [**Section 2.1**](#pangia-and-pangia-gui) and use command: ‘conda env create –f  gui.yml’. This acts on the .yml file within the GUI root directory to construct the environment. By default, name of the environment will be ‘gui’, but this can be replaced with any preferred name by renaming the prefix of the .yml file prior to creating the environment.
+2. In a terminal, navigate to PanGIA GUI directory created in [**Section 2.1**](#section-21-pangia-and-pangia-gui) and use command: ‘conda env create –f  gui.yml’. This acts on the .yml file within the GUI root directory to construct the environment. By default, name of the environment will be ‘gui’, but this can be replaced with any preferred name by renaming the prefix of the .yml file prior to creating the environment.
 
 3. Open a command line window and navigate to the GUI directory. Use command: ‘conda activate XXX’, where XXX is the name of the environment. Use the following series of commands to finish initial database and environment setup:
   + export FLASK_APP=pangia_gui.py
@@ -101,9 +96,9 @@ PanGIA requires a specific compute environment to satisfy its run-time dependenc
   + flask db upgrade
   + conda install -c bioconda fastp
   
-Whenever accessing the GUI, begin by opening three separate command line terminals, and navigate each into the GUI directory. Next, execute the ‘conda activate XXX’ command, where 'XXX' is the name of the conda environment specified above in [**Section 3.1**](#preparing-a-non-dockerized-environment) ('gui' by default). in each of the three separate command line instances/windows. Each instance is responsible for running one of three services comprising the GUI. See [**Section 4.1**](#accessing-the-gui) for more information. The GUI can be completely reset by navigating to http://localhost:5000/auth/reset_site - this is not recommended.
+Whenever accessing the GUI, begin by opening three separate command line terminals, and navigate each into the GUI directory. Next, execute the ‘conda activate XXX’ command, where 'XXX' is the name of the conda environment specified above in [**Section 3.1**](#section-31-preparing-a-non-dockerized-environment) ('gui' by default). in each of the three separate command line instances/windows. Each instance is responsible for running one of three services comprising the GUI. See [**Section 4.1**](#section-41-accessing-the-gui) for more information. The GUI can be completely reset by navigating to http://localhost:5000/auth/reset_site - this is not recommended.
 
-### **3.2**: **Preparing a Dockerized Environment**
+### **Section 3.2)**: **Preparing a Dockerized Environment**
 
 1. Download Docker and Docker Compose. Compose may need to be installed separately, depending on user OS. More details available at XXXX.
 
@@ -119,13 +114,13 @@ Whenever accessing the GUI, begin by opening three separate command line termina
 
 ## *Section 4)*: **Using the GUI**
 
-Running PanGIA through the GUI assumes that three independent services – a worker, scheduler, and Flask server – are already operational. [**Section 4.1**](#accessing-the-gui) covers the process of bringing each service online and opening the GUI. It also considers the Dockerized case, in which much of this has already been handled in [**Section 3.2**](#preparing-a-dockerized-environment) by Docker Compose. A complete tour of the GUI can be found in [**Section 4.2**](#gui-navigation).  A series of examples for three typical PanGIA runs can be found in [**Section 4.3**](#examples-of-usage), including standard analysis (Section 4.3.1); T-MARK & Decision Tree (Section 4.3.2); and Real-Time; (Section 4.3.3).
+Running PanGIA through the GUI assumes that three independent services – a worker, scheduler, and Flask server – are already operational. [**Section 4.1**](#section-41-accessing-the-gui) covers the process of bringing each service online and opening the GUI. It also considers the Dockerized case, in which much of this has already been handled in [**Section 3.2**](#section-32-preparing-a-dockerized-environment) by Docker Compose. A complete tour of the GUI can be found in [**Section 4.2**](#section-42-gui-navigation).  A series of examples for three typical PanGIA runs can be found in [**Section 4.3**](#section-43-examples-of-usage), including standard analysis (Section 4.3.1); T-MARK & Decision Tree (Section 4.3.2); and Real-Time; (Section 4.3.3).
 
-### **4.1**: **Accessing the GUI**
+### **Section 4.1)**: **Accessing the GUI**
 
-#### *4.1.1*: *Non-Dockerized Case*
+#### *Section 4.1.1)*: *Non-Dockerized Case*
 
-1. Following instructions listed at the the end of [**Section 3.1**](#preparing-a-non-dockerized-environment), prepare three command-line terminals as described.
+1. Following instructions listed at the the end of [**Section 3.1**](#section-31-preparing-a-non-dockerized-environment), prepare three command-line terminals as described.
 
 2. In first window use command: ‘redis-server’.
 
@@ -140,7 +135,7 @@ Running PanGIA through the GUI assumes that three independent services – a wor
 
 5. In a web browser, navigate to localhost:5000 for GUI access.
 
-#### *4.1.2*: *Dockerized Case*
+#### *Section 4.1.2)*: *Dockerized Case*
 
 1. In any command line window, navigate to PanGIA GUI directory.
 
@@ -148,25 +143,25 @@ Running PanGIA through the GUI assumes that three independent services – a wor
 
 3. In a web browser, navigate to localhost:8000 for GUI access.
 
-### **4.2**: **GUI Navigation**
+### **Section 4.2)**: **GUI Navigation**
 
-#### *4.2.1*: *Dashboard* 
+#### *Section 4.2.1)*: *Dashboard* 
 After logging in, users are directed to this page. It lists the history of both the most recent PanGIA runs and ongoing runs. Links to results and/or the ongoing job status page is provided under each listing. At the very bottom of the page, users may click a link directing to the PanGIA section of the GUI, described in more detail below.
 
   ![*the dashboard*](gui/images_gui/Users_and_Dashboard/PanGIA_Dashboard.png)
 
-### **4.2.2**: **Users**
+### **Section 4.2.2)**: **Users**
 Interface for adding users to the GUI’s persisted database. Current users are listed with name, username, email, date of last login, and role (Admin, User, etc.).
 
   ![*the users page*](gui/images_gui/Users_and_Dashboard/PanGIA_Users.png)
 
-### **4.2.3**: **Settings**
+### **Section 4.2.3)**: **Settings**
 Multi-tabbed interface for specification of general settings, PanGIA preprocessing/run parameters, project categories, file templates, and meta-types. Specifics for each tab and sub-tab are listed below.
 
-##### *4.2.3.1*: General Settings
+##### *Section 4.2.3.1)*: General Settings
 These settings are dedicated to tailoring PanGIA runs to the user’s default needs. Most general settings may be adjusted on-the-fly, while preparing any PanGIA run. However, preparing defaults here will save time. The general settings are subdivided into three categories:
 
-1. Application Settings: User specifies PanGIA directory path and PanGIA database/uploads path. On Docker, the pathway must reference the PanGIA directory mounted to the ‘app’ container. Important: this relative path should match the updated line in the docker-compose.yml file, as described in [**Section 3.2**](#preparing-a-dockerized-environment) above. Users may adjust thread-count made available for PanGIA. An even number is recommended. Default is two threads.
+1. Application Settings: User specifies PanGIA directory path and PanGIA database/uploads path. On Docker, the pathway must reference the PanGIA directory mounted to the ‘app’ container. Important: this relative path should match the updated line in the docker-compose.yml file, as described in [**Section 3.2**](#section-32-preparing-a-dockerized-environment) above. Users may adjust thread-count made available for PanGIA. An even number is recommended. Default is two threads.
 
   ![*application settings - within general settings*](gui/images_gui/Settings/PanGIA_Settings_General_AppSettings.png)
 
@@ -178,34 +173,34 @@ These settings are dedicated to tailoring PanGIA runs to the user’s default ne
 
   ![*run parameter settings - within general settings*](gui/images_gui/Settings/PanGIA_Settings_Run_Param.png)
   
-##### *4.2.3.2*: *Project Settings* 
+##### *Section 4.2.3.2)*: *Project Settings* 
 
 Used to consolidate and organize related PanGIA uploads/runs. Existing Projects may be archived or deleted. Projects are instantiated with a name, description, and slug. They may be constructed as children of an existing parent Project. When providing a name and slug, use only alphanumeric and  ‘_’ characters.
 
   ![*project settings*](gui/images_gui/Settings/PanGIA_Settings_Projects.png)
   
-##### *4.2.3.3*: *File Template Settings* 
+##### *Section 4.2.3.3)*: *File Template Settings* 
 
 User may specify PanGIA input file types other than .fastq on this tab. File Templates require a name, description, and file extension. When creating a new File Template, the user must decide which Meta-Types will be available for runs using that File Template. A default for .fastq files is included.
 
   ![*file template settings*](gui/images_gui/Settings/PanGIA_Settings_File_Templates.png)
   
-##### *4.2.3.4*: *Meta-Type Settings*
+##### *Section 4.2.3.4)*: *Meta-Type Settings*
 User may impose additional rules regarding meta-data, grouping it together and limiting input variance. Default Meta-Types include names of spiked-in organisms and spike-concentration, sequencing protocol, and the sampling date. User may specify whether data was a control sample. New Meta-Types require a name, description, and value (string, integer, Boolean, date, etc.), and may be designated as ‘required’ if desired.
 
   ![*meta-type settings*](gui/images_gui/Settings/PanGIA_Settings_MetaTypes.png)
   
-#### **4.2.4**: **Projects**
-Provides the name of each Project constructed in the Settings - Projects tab as described above in [**Section 4.2.3.2](#project-settings). Clicking on the name of a Project yields a list of all the files that have been uploaded to that Project. The list is grouped by File Template. Files may be ordered by ascending/descending or date/name. Each File Template header has a large blue button labeled ‘Add New File’ - this directs the user to the upload interface. Files uploaded through the GUI are copied into a new directory named after the Project in the local pangia/upload directory.
+#### **Section 4.2.4)**: **Projects**
+Provides the name of each Project constructed in the Settings - Projects tab as described above in [**Section 4.2.3.2](#section-4232-project-settings). Clicking on the name of a Project yields a list of all the files that have been uploaded to that Project. The list is grouped by File Template. Files may be ordered by ascending/descending or date/name. Each File Template header has a large blue button labeled ‘Add New File’ - this directs the user to the upload interface. Files uploaded through the GUI are copied into a new directory named after the Project in the local pangia/upload directory.
 
   **Projects File Upload Page Image HERE**
 
-##### *4.2.4.1*: *Running PanGIA from the Projects Tab*
-To start a job from the Project menu, use the ‘Run PanGIA’ button on any file uploaded to the Project. Each run requires a name and description. Drop-down menus specify which paired files are to be used. The first menu option defaults to whatever file the Run Information page was accessed from. All General settings may be adjusted here: the interface is identical to that appearing in [**Section 4.2.3.1**](#general-settings).
+##### *Section 4.2.4.1)*: *Running PanGIA from the Projects Tab*
+To start a job from the Project menu, use the ‘Run PanGIA’ button on any file uploaded to the Project. Each run requires a name and description. Drop-down menus specify which paired files are to be used. The first menu option defaults to whatever file the Run Information page was accessed from. All General settings may be adjusted here: the interface is identical to that appearing in [**Section 4.2.3.1**](#section-4231-general-settings).
 
   **Run Information Image HERE**
 
-##### *4.2.4.2*: Exploring the Projects Tab
+##### *Section 4.2.4.2)*: Exploring the Projects Tab
 Files listed within a Project have three interactive links. The View Meta Data and View Results links direct the user to a new page, with two tabs. These tabs are named X Information, where ‘X’ is the File Template, and Results. 
 
 1. The X Information tab specifies the filename, upload date, filepath, and description.
@@ -216,26 +211,26 @@ Files listed within a Project have three interactive links. The View Meta Data a
 
   **Projects-Results Image HERE**
 
-3. Runs have a link labeled ‘View Results’. Following this link directs the user to the PanGIA Results section of the GUI, described below in [**Section 4.2.5**](#pangia-pangia-results).
+3. Runs have a link labeled ‘View Results’. Following this link directs the user to the PanGIA Results section of the GUI, described below in [**Section 4.2.5**](#section-425-pangia-pangia-results).
 
   **Projects-View-Results Image HERE**
 
-#### **4.2.5**: **PanGIA & PanGIA Results**
-Lists all queued and completed jobs, regardless of Project. Each completed job contains the same information found in the Results tab accessible through the Projects section of the GUI; each job also has the same ‘View Results’ link. Both are described above in [**Section 4.2.4**](#projects).
+#### **Section 4.2.5)**: **PanGIA & PanGIA Results**
+Lists all queued and completed jobs, regardless of Project. Each completed job contains the same information found in the Results tab accessible through the Projects section of the GUI; each job also has the same ‘View Results’ link. Both are described above in [**Section 4.2.4**](#section-424-projects).
 
-##### *4.2.5.1*: *Results Page*
+##### *Section 4.2.5.1)*: *Results Page*
 The Results page provides run name and description, and features an interactive window to browse  rows of the .tsv file output of the PanGIA run. This page also links to the Visualizer, which will graphically display that output. An in-depth PanGIA run log is provided at the bottom – the printout there is similar to what can be found in in the worker printout during the run. An example Results page appears below.
 
   **PanGIA Results Image HERE**
 
-#### **4.2.6**: **PanGIA Real-Time**
+#### **Section 4.2.6)**: **PanGIA Real-Time**
 User specifies a job name, description, and associated Project, as usual. Instead of paired files, the user must provide the path to a directory that Real-Time PanGIA is listening for. This directory should be the dumping point for ongoing nanopore sequencing. Notably, once Real-Time PanGIA is initiated, the user must manually terminate the job as desired. Completed Real-Time jobs persist PanGIA results from the last job iteration.
 
   **Real-Time Run Info Image HERE**
 
-### **4.3**: **Examples of Usage** 
+### **Section 4.3)**: **Examples of Usage** 
 
-#### **4.3.1**: **Baseline Example**
+#### **Section 4.3.1)**: **Baseline Example**
 
 The following walkthrough describes a typical PanGIA run with default settings. For this example, assume the Project ‘SOP_Runs’ has already been established, and is accessible through the GUI sidebar as shown below.
 
@@ -245,7 +240,7 @@ This link redirects to the file page associated with ‘SOP_Runs’. For the pur
 
   **Example 1 fastq Uploads Page Image HERE**
 
-Clicking on the Run PanGIA buttons associated with either .fastq file directs to the Run PanGIA page. As discussed in [**Section 4.2.4.1**](#general-settings), this page is split into Run Information and General settings. Pressing the button associated with ‘BMal_100000_rep1_R1’ directs to the Run Information page shown below.
+Clicking on the Run PanGIA buttons associated with either .fastq file directs to the Run PanGIA page. As discussed in [**Section 4.2.4.1**](#section-4241-general-settings), this page is split into Run Information and General settings. Pressing the button associated with ‘BMal_100000_rep1_R1’ directs to the Run Information page shown below.
 
   **Example 1 Run Information Image HERE**
   
@@ -277,9 +272,9 @@ Clicking the PanGIA Visualization button opens the Visualizer in a separate wind
 
   **Example 1 Vis Image HERE**
 
-##### *4.3.1.1*: *Baseline Example Visualizer Usage and Analysis*
+##### *Section 4.3.1.1)*: *Baseline Example Visualizer Usage and Analysis*
 
-This section discusses current features of the Visualizer and uses the PanGIA run from [**Section 4.3.1**](#baseline-example) to describe how the Visualizer is used to interpret PanGIA results. Presently, the Visualizer displays hits for taxa between the genus and strain level, and includes a scatterplot and datatable. On the scatterplot, each dot on the plot corresponds to one such taxa and are listed on the x-axis.
+This section discusses current features of the Visualizer and uses the PanGIA run from [**Section 4.3.1**](#section-431-baseline-example) to describe how the Visualizer is used to interpret PanGIA results. Presently, the Visualizer displays hits for taxa between the genus and strain level, and includes a scatterplot and datatable. On the scatterplot, each dot on the plot corresponds to one such taxa and are listed on the x-axis.
 
 1. The scatterplot y-axis indicates ‘Raw Read Count’ of each hit. This axis is dynamically scaled based on maximum/minimum values present in the sample. In this example, the y-axis covers a very large range of values – between an effective measurement of zero reads and one-million. While this would be too large a scale for comparison of read count between two strain-level hits, it is a very suitable scale in this example, where genus *Burkholderia* is compared against species *Burkholderia mallei* and a further strain subset *Burkholderia pseudomallei*. In the image above, the center of the point representing genus *Burkholderia* intersects the y-axis (read count) somewhere between fifty-thousand and five-hundred thousand reads – followed in order of magnitude by species and strain.
 
