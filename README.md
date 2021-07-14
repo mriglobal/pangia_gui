@@ -200,18 +200,17 @@ standard analysis (Section 4.3.1); T-MARK & Decision Tree (Section
 2.  In first window use command: ‘redis-server’.
 
 ![*the redis-server in a terminal
-window*](images_gui/GUI_Setup/redis.png)
-
-3.  In second window use command: ‘rq worker pangia-tasks’.
+window*](gui/images_gui/GUI_Setup/redis.png) 3. In second window use
+command: ‘rq worker pangia-tasks’.
 
 ![*the worker in a terminal
-window*](images_gui/GUI_Setup/Terminal_RQ-Worker.png)
+window*](gui/images_gui/GUI_Setup/Terminal_RQ-Worker.png)
 
 4.  In third window use commands: ‘export FLASK\_APP=pangia\_gui.py’ +
     ‘flask run’.
 
 ![*the flask app in a terminal
-window*](images_gui/GUI_Setup/Terminal_Flask_App.png)
+window*](gui/images_gui/GUI_Setup/Terminal_Flask_App.png)
 
 5.  In a web browser, navigate to localhost:5000 for GUI access.
 
@@ -233,7 +232,8 @@ and/or the ongoing job status page is provided under each listing. At
 the very bottom of the page, users may click a link directing to the
 PanGIA section of the GUI, described in more detail below.
 
-![*the dashboard*](images_gui/Users_and_Dashboard/PanGIA_Dashboard.png)
+![*the
+dashboard*](gui/images_gui/Users_and_Dashboard/PanGIA_Dashboard.png)
 
 ### **4.2.2**: **Users**
 
@@ -241,7 +241,7 @@ Interface for adding users to the GUI’s persisted database. Current
 users are listed with name, username, email, date of last login, and
 role (Admin, User, etc.).
 
-![*the users page*](images_gui/Users_and_Dashboard/PanGIA_Users.png)
+![*the users page*](gui/images_gui/Users_and_Dashboard/PanGIA_Users.png)
 
 ### **4.2.3**: **Settings**
 
@@ -266,7 +266,7 @@ time. The general settings are subdivided into three categories:
     recommended. Default is two threads.
 
 ![*application settings - within general
-settings*](images_gui/Settings/PanGIA_Settings_General_AppSettings.png)
+settings*](gui/images_gui/Settings/PanGIA_Settings_General_AppSettings.png)
 
 2.  Preprocessing: Options to alter/filter reads prior to PanGIA
     analysis. May trim reads for quality level, adjust the average
@@ -276,7 +276,7 @@ settings*](images_gui/Settings/PanGIA_Settings_General_AppSettings.png)
     may opt to skip preprocessing.
 
 ![*preprocessing settings - within general
-settings*](images_gui/Settings/PanGIA_Settings_General_Proprocessing.png)
+settings*](gui/images_gui/Settings/PanGIA_Settings_General_Proprocessing.png)
 
 3.  Run Parameters: Options determining read scoring, and additional
     forms of analysis (TMARK, Decision Tree, etc.) May specify values
@@ -287,7 +287,7 @@ settings*](images_gui/Settings/PanGIA_Settings_General_Proprocessing.png)
     determine if additional analyses are included in the run.
 
 ![*run parameter settings - within general
-settings*](images_gui/Settings/PanGIA_Settings_Run_Param.png)
+settings*](gui/images_gui/Settings/PanGIA_Settings_Run_Param.png)
 
 ##### *4.2.3.2*: *Project Settings*
 
@@ -297,7 +297,8 @@ name, description, and slug. They may be constructed as children of an
 existing parent Project. When providing a name and slug, use only
 alphanumeric and ‘\_’ characters.
 
-![*project settings*](images_gui/Settings/PanGIA_Settings_Projects.png)
+![*project
+settings*](gui/images_gui/Settings/PanGIA_Settings_Projects.png)
 
 ##### *4.2.3.3*: *File Template Settings*
 
@@ -308,7 +309,7 @@ be available for runs using that File Template. A default for .fastq
 files is included.
 
 ![*file template
-settings*](images_gui/Settings/PanGIA_Settings_File_Templates.png)
+settings*](gui/images_gui/Settings/PanGIA_Settings_File_Templates.png)
 
 ##### *4.2.3.4*: *Meta-Type Settings*
 
@@ -320,7 +321,7 @@ New Meta-Types require a name, description, and value (string, integer,
 Boolean, date, etc.), and may be designated as ‘required’ if desired.
 
 ![*meta-type
-settings*](images_gui/Settings/PanGIA_Settings_MetaTypes.png)
+settings*](gui/images_gui/Settings/PanGIA_Settings_MetaTypes.png)
 
 #### **4.2.4**: **Projects**
 

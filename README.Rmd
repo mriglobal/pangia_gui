@@ -2,7 +2,7 @@
 title: "pangia_gui_sop"
 author: "Gus Thomas"
 date: "7/13/2021"
-output: html_document
+output: github_document
 ---
 
 ```{r setup, include=FALSE}
@@ -129,15 +129,14 @@ Running PanGIA through the GUI assumes that three independent services – a wor
 
 2. In first window use command: ‘redis-server’.
 
-  ![*the redis-server in a terminal window*](images_gui/GUI_Setup/redis.png)
-  
+  ![*the redis-server in a terminal window*](gui/images_gui/GUI_Setup/redis.png)
 3. In second window use command: ‘rq worker pangia-tasks’. 
 
-  ![*the worker in a terminal window*](images_gui/GUI_Setup/Terminal_RQ-Worker.png)
+  ![*the worker in a terminal window*](gui/images_gui/GUI_Setup/Terminal_RQ-Worker.png)
   
 4. In third window use commands: ‘export FLASK_APP=pangia_gui.py’ + ‘flask run’.
 
-  ![*the flask app in a terminal window*](images_gui/GUI_Setup/Terminal_Flask_App.png)
+  ![*the flask app in a terminal window*](gui/images_gui/GUI_Setup/Terminal_Flask_App.png)
 
 5. In a web browser, navigate to localhost:5000 for GUI access.
 
@@ -154,12 +153,12 @@ Running PanGIA through the GUI assumes that three independent services – a wor
 #### *4.2.1*: *Dashboard* 
 After logging in, users are directed to this page. It lists the history of both the most recent PanGIA runs and ongoing runs. Links to results and/or the ongoing job status page is provided under each listing. At the very bottom of the page, users may click a link directing to the PanGIA section of the GUI, described in more detail below.
 
-  ![*the dashboard*](images_gui/Users_and_Dashboard/PanGIA_Dashboard.png)
+  ![*the dashboard*](gui/images_gui/Users_and_Dashboard/PanGIA_Dashboard.png)
 
 ### **4.2.2**: **Users**
 Interface for adding users to the GUI’s persisted database. Current users are listed with name, username, email, date of last login, and role (Admin, User, etc.).
 
-  ![*the users page*](images_gui/Users_and_Dashboard/PanGIA_Users.png)
+  ![*the users page*](gui/images_gui/Users_and_Dashboard/PanGIA_Users.png)
 
 ### **4.2.3**: **Settings**
 Multi-tabbed interface for specification of general settings, PanGIA preprocessing/run parameters, project categories, file templates, and meta-types. Specifics for each tab and sub-tab are listed below.
@@ -169,32 +168,32 @@ These settings are dedicated to tailoring PanGIA runs to the user’s default ne
 
 1. Application Settings: User specifies PanGIA directory path and PanGIA database/uploads path. On Docker, the pathway must reference the PanGIA directory mounted to the ‘app’ container. Important: this relative path should match the updated line in the docker-compose.yml file, as described in [**Section 3.2**](#preparing-a-dockerized-environment) above. Users may adjust thread-count made available for PanGIA. An even number is recommended. Default is two threads.
 
-  ![*application settings - within general settings*](images_gui/Settings/PanGIA_Settings_General_AppSettings.png)
+  ![*application settings - within general settings*](gui/images_gui/Settings/PanGIA_Settings_General_AppSettings.png)
 
 2. Preprocessing: Options to alter/filter reads prior to PanGIA analysis. May trim reads for quality level, adjust the average quality, minimum read length, and “N” base cutoff values, apply a low complexity filter, exclude PolyA tails, or indicate a custom number of base pairs to cut from 5’ or 3’ ends of reads. The user may opt to skip preprocessing.
 
-  ![*preprocessing settings - within general settings*](images_gui/Settings/PanGIA_Settings_General_Proprocessing.png)
+  ![*preprocessing settings - within general settings*](gui/images_gui/Settings/PanGIA_Settings_General_Proprocessing.png)
 
 3. Run Parameters: Options determining read scoring, and additional forms of analysis (TMARK, Decision Tree, etc.) May specify values for seed length, and assign minimal values for score, aligned score, read count, read RSNB, linear length, percent genome coverage, and depth/RS depth. Scoring method may be selected from a drop-down menu (Standalone/Background/Combined), and a series of check boxes determine if additional analyses are included in the run.
 
-  ![*run parameter settings - within general settings*](images_gui/Settings/PanGIA_Settings_Run_Param.png)
+  ![*run parameter settings - within general settings*](gui/images_gui/Settings/PanGIA_Settings_Run_Param.png)
   
 ##### *4.2.3.2*: *Project Settings* 
 
 Used to consolidate and organize related PanGIA uploads/runs. Existing Projects may be archived or deleted. Projects are instantiated with a name, description, and slug. They may be constructed as children of an existing parent Project. When providing a name and slug, use only alphanumeric and  ‘_’ characters.
 
-  ![*project settings*](images_gui/Settings/PanGIA_Settings_Projects.png)
+  ![*project settings*](gui/images_gui/Settings/PanGIA_Settings_Projects.png)
   
 ##### *4.2.3.3*: *File Template Settings* 
 
 User may specify PanGIA input file types other than .fastq on this tab. File Templates require a name, description, and file extension. When creating a new File Template, the user must decide which Meta-Types will be available for runs using that File Template. A default for .fastq files is included.
 
-  ![*file template settings*](images_gui/Settings/PanGIA_Settings_File_Templates.png)
+  ![*file template settings*](gui/images_gui/Settings/PanGIA_Settings_File_Templates.png)
   
 ##### *4.2.3.4*: *Meta-Type Settings*
 User may impose additional rules regarding meta-data, grouping it together and limiting input variance. Default Meta-Types include names of spiked-in organisms and spike-concentration, sequencing protocol, and the sampling date. User may specify whether data was a control sample. New Meta-Types require a name, description, and value (string, integer, Boolean, date, etc.), and may be designated as ‘required’ if desired.
 
-  ![*meta-type settings*](images_gui/Settings/PanGIA_Settings_MetaTypes.png)
+  ![*meta-type settings*](gui/images_gui/Settings/PanGIA_Settings_MetaTypes.png)
   
 #### **4.2.4**: **Projects**
 Provides the name of each Project constructed in the Settings - Projects tab as described above in [**Section 4.2.3.2](#project-settings). Clicking on the name of a Project yields a list of all the files that have been uploaded to that Project. The list is grouped by File Template. Files may be ordered by ascending/descending or date/name. Each File Template header has a large blue button labeled ‘Add New File’ - this directs the user to the upload interface. Files uploaded through the GUI are copied into a new directory named after the Project in the local pangia/upload directory.
