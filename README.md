@@ -483,7 +483,7 @@ as desired. Completed Real-Time jobs persist PanGIA results from the
 last job iteration.
 
 <figure>
-<img src="gui/images_gui/Projects_and_Runs/PanGIA_RealTime">
+<img src="gui/images_gui/Projects_and_Runs/PanGIA_RealTime.png">
 <figcaption>
 <em>setting up a RealTime PanGIA run</em>
 </figcaption>
