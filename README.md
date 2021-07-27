@@ -54,8 +54,8 @@ Settings*](#section-4234-meta-type-settings)
 Tab*](#section-4241-running-pangia-from-the-projects-tab)  
               *4.2.4.2*: [*Exploring the Projects
 Tab*](#section-4242-exploring-the-projects-tab)  
-          *4.2.5*: [*PanGIA & PanGIA
-Results*](#section-425-pangia-pangia-results)  
+          *4.2.5*: [*PanGIA and PanGIA
+Results*](#section-425-pangia-and-pangia-results)  
               *4.2.5.1*: [*Results Page*](#section-4251-results-page)  
           *4.2.6*: [*Real-Time PanGIA*](#section-426-real-time-pangia)  
       **4.3**: [**Examples of Usage**](#section-43-examples-of-usage)  
@@ -65,6 +65,11 @@ analysis*\]
           *4.3.3*: \[*Example \#3: Decision Tree - All Results Mode*\]
 
 ### 5. [Planned Visualizer Features](#section-5-planned-visualizer-features)
+
+### 6. [Troubleshooting](#section-6-troubleshooting)
+
+      **6.1**: [**Installation
+Troubleshooting**](#section-61-installation-troubleshooting)
 
 ## *Section 1)*: **Introduction**
 
@@ -127,7 +132,11 @@ environment independent of the host machine.
 
 1.  Install conda and the correct Linux distribution. See XXXX for
     details.
-
+    1.  We recommend that you use the *Miniconda* distribution available
+        at <https://docs.conda.io/en/latest/miniconda.html>. If you’d
+        like to download the distribution directly, please use this
+        link:
+        <https://repo.anaconda.com/miniconda/Miniconda3-py39_4.9.2-Linux-x86_64.sh>
 2.  In a terminal, navigate to PanGIA GUI directory created in
     [**Section 2.1**](#section-21-pangia-and-pangia-gui). Please note
     that the default relative path is ***`pangia_gui/gui`***. Use the
@@ -137,16 +146,12 @@ environment independent of the host machine.
     environment will be ‘gui’, but this can be replaced by renaming the
     prefix of the .yml file prior to creating the environment.
 
-3.  Within the terminal from the previous step, use the command:
-    `conda activate XXX`, where XXX is the name of the environment
-    (‘gui’ by default). Next, run the following series of commands to
-    finish initial database and environment setup:
-
--   `export FLASK_APP=pangia_gui.py`
--   `flask db init`
--   `flask db migrate –m`
--   `flask db upgrade`
--   `conda install -c bioconda fastp`
+~~3. Within the terminal from the previous step, use the command:
+`conda activate XXX`, where XXX is the name of the environment (‘gui’ by
+default). Next, run the following series of commands to finish initial
+database and environment setup: + `export FLASK_APP=pangia_gui.py` +
+`flask db init` + `flask db migrate –m` + `flask db upgrade` +
+`conda install -c bioconda fastp`~~
 
 Whenever accessing the GUI, begin by opening ***three separate command
 line terminals***, and navigate each into the PanGIA GUI directory.
@@ -501,7 +506,7 @@ Template, and Results.
     the user to the PanGIA Results section of the GUI, described below
     in [**Section 4.2.5**](#section-425-pangia-pangia-results).
 
-#### **Section 4.2.5)**: **PanGIA & PanGIA Results**
+#### **Section 4.2.5)**: **PanGIA and PanGIA Results**
 
 Lists all queued and completed jobs, regardless of Project. Each
 completed job contains the same information found in the Results tab
@@ -819,3 +824,178 @@ An example of the Visualizer as it will appear with widgets:
 toggling, and other filtering tools</em>
 </figcaption>
 </figure>
+
+## *Section 6)*: **Troubleshooting**
+
+If having trouble with installation or usage, details in this section
+may be of use.
+
+### **Section 6.1)**: **Installation Troubleshooting**
+
+We provide a second installation file, `gui_specs.txt` which may be of
+use if the steps to construct a conda environment using a .yml file
+specified in [**Section
+3.1**](#section-31-preparing-a-non-dockerized-environment) do not work
+correctly. Please follow these instructions:
+
+1.  In a terminal window, run the command `conda deactivate` to ensure
+    you begin in the base environment.
+2.  Remove the environment you attempted to create in [**Section
+    3.1**](#section-31-preparing-a-non-dockerized-environment) - if you
+    used the default name ‘gui’, do this by running the command
+    `conda env remove --name gui`. Skip this step if you’d prefer a
+    different name for your working environment.
+3.  In the same window, run the command
+    `conda create --name gui python=3.6 --no-default-packages`. This
+    creates a conda environment with none of the packages on the PATH of
+    the base environment - ensuring that you have complete control of
+    what is installed into your working environment.
+4.  In the same window, run the command `conda activate gui` - replace
+    ‘gui’ if you used a different name in Step 3.
+5.  In the same window, run the command
+    `conda install --name gui --file gui_specs.txt`.
+6.  You should now be able to follow the instructions in [*Section
+    4.1*](#section-411-non-dockerized-case) to launch the GUI.
+
+### **Section 6.2)**: **eGPU Set-Up for GuPPY Basecalling**
+
+If planning to use PanGIA as a Real-Time tool, using a GPU to power the
+MinION/GuPPY software is required. This section covers a step-by-step
+process for connecting an external GPU (eGPU) to a computer running the
+Linux distribution of Pop-OS 20.04 - eventually, this section will be
+expanded to cover set-up for Ubuntu 18.4.0 and 20.04 as well.
+
+#### **Section 6.2.1)**: **Pop-OS 20.04**
+
+These instructions were developed with a particular computer, OS, eGPU,
+and eGFX chassis. As testing continues, we will consider other set-ups
+as well. While using these instructions, mileage may vary for use with
+other configurations. Please note however, that **the MinION/GuPPY
+software is only compatible with Linux and plays most nicely with NVIDIA
+GPUs**. We recommend downloading a NVidia GPU Driver to your computer
+prior to following these instructions. The ingredients: 1. Computing
+Unit: **NUC8:7HNK** 2. OS: **Pop-OS version 20.04** 3. eGPU: **NVidia
+Quadro P4000** 1. NVidia GPU Driver: **460.73.01** 4. eGFX Chassis:
+**EB3T-v3**
+
+Connect the eGPU to the eGFX and ensure both are connected to their
+power supply. Then, connect the eGFX to your computing unit via
+Thunderbolt 3. Ensure that you are using a Thunderbolt cable and
+connecting into Thunderbolt ports (look for the downward-arrow lightning
+symbol). If the eGPU and eGFX chassis are compatible, the computer will
+have access to the connected Thunderbolt device. You may
+verify/troubleshoot this as follows: 1. In a terminal window, run the
+command `cat /sys/bus/thunderbolt/devices/0-3/authorized`. If the
+computer can see and has authorized access to the eGPU, this will return
+a `1`. Please note that there may be variation in the above command
+depending on your system - the `0-3` may instead be `0-0`, `0-1`, `0-2`,
+or something else; the best way to verify is to navigate to
+`/sys/bus/thunderbolt/devices/` and see what is present. 2. If the above
+command does not return a `1`, run the command
+`sudo sh -c 'echo 1 > /sys/bus/thunderbolt/devices/0-3/authorized'` in
+order to grant access to the GPU, making any needed changes to the path
+as described in Step 1. Verify eGPU visibility by running the command
+`lspci | grep -i nvidia`, which will return information on the connected
+eGPU.
+
+Upgrade the Linux kernel and prepare your system for eGPU processing.
+For each of these commands, press `y` when asked whether you’d like to
+install/upgrade packages:
+
+1.  `sudo apt-get update`
+2.  `sudo apt-get upgrade`
+3.  `sudo apt-get install gcc build-essential`
+4.  `sudo apt-get install linux-headers-$(uname -r)`
+5.  `sudo apt-get install linux-image-$(uname -r)`
+6.  `sudo apt-get install linux-modules-extra-$(uname -r) linux-image-virtual`
+7.  `reboot`
+
+After the computer boots, it is time to install the NVidia driver -
+**WARNING**: once the driver has been installed, there is a risk that
+you will lose access to your OS’s graphical user interface. There are
+detailed steps on how we fixed this problem using the above specified
+set-up, but we can not guarantee it’s effectiveness for other cases.
+That being said …
+
+1.  If you haven’t already, download an NVidia GPU driver from the
+    official site - **here’s the link** to the driver used in these
+    instructions (**460.73.01**). We put ours in the Downloads folder.
+2.  Blacklist the ‘nouveau’ graphics drivers that the eGPU will try to
+    use by default. To do this:
+    1.  Create the blacklist file by running command:
+        `sudo touch /etc/modprobe.d/blacklist-nouveau.conf`.
+    2.  Navigate to and open the newly created file via `nano` or some
+        other command line editor.
+    3.  Add two lines: `blacklist nouveau` and
+        `options nouveau modeset=0` - save and close the file.
+
+Next, update the config settings by running the following commands,
+again pressing `y` when asked whether you’d like to update/upgrade
+packages:
+
+1.  `sudo update-initramfs -u`
+2.  `sudo update-grub`
+3.  `reboot`
+
+Once the computer restarts, check whether the ‘nouveau’ drivers are
+blacklisted by running the command `lsmod | grep -i nouveau` - this
+should return nothing. From here, it is time to enter ‘Text-Only’ mode
+to install NVidia drivers. Log out (without shutting down). Press
+**Ctrl+Alt+F2** to enter ‘Text-Only’ mode, logging in with your username
+and password. From here, you will disable the Linux service that powers
+the OS’s GUI. Run the command `sudo service gdm3 stop`. If you are using
+a different Linux OS, the name of the service may be different - instead
+of `gdm3`, yours may be `lightdm`, `gdm`, or `sddm` - use whichever is
+appropriate. You may verify that the service has been stopped by running
+the command `service --status-all | grep -i` - look for a \[-\] next to
+`gdm3`.
+
+Drop a ‘run level’ by running the command `sudo init 3`. It may be a
+good idea to check whether your eGPU is still recognized and authorized
+by the computer, using aforementioned commands
+`cat /sys/bus/thunderbolt/devices/0-3/authorized` and
+`lspci | grep -i nvidia`.
+
+Navigate to wherever you downloaded the NVidia driver and unzip/run it
+using the command `sudo sh NIDIA-Linux-x86_64-460.73.01.run -x` -
+replace the driver number (in this example, `460.73.01`) with whatever
+driver you plan to use. Please note that the driver will be extracted
+into the same folder.
+
+Run the command `cd NVIDIA-Linux-x86_64-460.73.01/kernel/nvidia-uvm` to
+navigate into the driver folder. Next:
+
+1.  Navigate to and open the file named `uvm_va_block.c` with a command
+    line editor. In your case, `uvm` may instead appear as `uvm8`.
+2.  Add a line underneath the header composed of asterisks:
+    `#include <linux/sched/task_stack.h>`.
+3.  Look over the file - there should be a line of asterisks, followed
+    by the line you just added, followed by the line
+    `#include "uvm_linux.h`, which should have already been present.
+4.  Save and close the file.
+
+**Warning**: In this next phase, the driver installation will take
+place. Please ensure that you have backed up everything you’d like to on
+your hard drive - in the worst case, driver installation may make it
+impossible to access your OS’s GUI. Proceed with caution. When you are
+ready:
+
+1.  Reboot your computer and press `F2` during start-up to open BIOS
+    settings. In the Boot menu of the Advanced tab, find the box labeled
+    **Secure Boot** and uncheck it. Boot the computer and re-enter Text
+    Mode as described above (disable `gdm3` once more, if necessary).
+2.  Navigate back to `/NVIDIA-Linux-x86_64-460.73.01` (as before,
+    changing driver number as needed).
+3.  Run the command: `sudo ./nvidia-installer --no-opengl-files` to
+    initiate driver installation.
+4.  You will be presented with a number of options during driver
+    installation. We recommend the following parameters:
+5.  Answer **Continue** or **Continue Anyway** when prompted about a
+    pre-installation script failing.
+6.  Answer **No** when prompted about **DKMS**.
+7.  Answer **Yes** when asked about including 32-bit compatibility.
+8.  Answer **No** when asked whether you’d like the new driver to
+    **configure ‘X’**. This is especially crucial if you plan to use the
+    eGPU only for computation, and never for accelerating the OS GUI’s
+    graphics.
+9.  Allow installation to complete.
