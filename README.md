@@ -873,10 +873,13 @@ as well. While using these instructions, mileage may vary for use with
 other configurations. Please note however, that **the MinION/GuPPY
 software is only compatible with Linux and plays most nicely with NVIDIA
 GPUs**. We recommend downloading a NVidia GPU Driver to your computer
-prior to following these instructions. The ingredients: 1. Computing
-Unit: **NUC8:7HNK** 2. OS: **Pop-OS version 20.04** 3. eGPU: **NVidia
-Quadro P4000** 1. NVidia GPU Driver: **460.73.01** 4. eGFX Chassis:
-**EB3T-v3**
+prior to following these instructions. The ingredients:
+
+1.  Computing Unit: **NUC8:7HNK**
+2.  OS: **Pop-OS version 20.04**
+3.  eGPU: **NVidia Quadro P4000**
+4.  NVidia GPU Driver: **460.73.01**
+5.  eGFX Chassis: **EB3T-v3**
 
 Connect the eGPU to the eGFX and ensure both are connected to their
 power supply. Then, connect the eGFX to your computing unit via
@@ -884,19 +887,24 @@ Thunderbolt 3. Ensure that you are using a Thunderbolt cable and
 connecting into Thunderbolt ports (look for the downward-arrow lightning
 symbol). If the eGPU and eGFX chassis are compatible, the computer will
 have access to the connected Thunderbolt device. You may
-verify/troubleshoot this as follows: 1. In a terminal window, run the
-command `cat /sys/bus/thunderbolt/devices/0-3/authorized`. If the
-computer can see and has authorized access to the eGPU, this will return
-a `1`. Please note that there may be variation in the above command
-depending on your system - the `0-3` may instead be `0-0`, `0-1`, `0-2`,
-or something else; the best way to verify is to navigate to
-`/sys/bus/thunderbolt/devices/` and see what is present. 2. If the above
-command does not return a `1`, run the command
-`sudo sh -c 'echo 1 > /sys/bus/thunderbolt/devices/0-3/authorized'` in
-order to grant access to the GPU, making any needed changes to the path
-as described in Step 1. Verify eGPU visibility by running the command
-`lspci | grep -i nvidia`, which will return information on the connected
-eGPU.
+verify/troubleshoot this as follows:
+
+1.  In a terminal window, run the command
+    `cat /sys/bus/thunderbolt/devices/0-3/authorized`. If the computer
+    can see and has authorized access to the eGPU, this will return a
+    `1`. Please note that there may be variation in the above command
+    depending on your system - the `0-3` may instead be `0-0`, `0-1`,
+    `0-2`, or something else; the best way to verify is to navigate to
+    `/sys/bus/thunderbolt/devices/` and see what is present.
+2.  If the above command does not return a `1`, run the command
+    `sudo sh -c 'echo 1 > /sys/bus/thunderbolt/devices/0-3/authorized'`
+    in order to grant access to the GPU, making any needed changes to
+    the path as described in Step 1. Verify eGPU visibility by running
+    the command `lspci | grep -i nvidia`, which will return information
+    on the connected eGPU.
+3.  Alternatively, adjusting Thunderbolt 3 security settings to “Legacy
+    Mode” in the BIOS under “Advanced Settings” will automatically echo
+    a `1` into the above file for you.
 
 Upgrade the Linux kernel and prepare your system for eGPU processing.
 For each of these commands, press `y` when asked whether you’d like to
